@@ -50,10 +50,15 @@
 
   html {
     scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
   }
 
   h1, h2, h3, h4, h5, h6 {
     @apply font-heading;
+  }
+
+  ::selection {
+    @apply bg-teal/30 text-navy;
   }
 }
 
@@ -85,10 +90,30 @@
   }
   
   .button-primary {
-    @apply px-6 py-3 bg-teal text-white rounded-md hover:bg-teal/90 transition-colors;
+    @apply px-6 py-3 bg-teal text-white rounded-md hover:bg-teal/90 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg;
   }
   
   .button-outline {
-    @apply px-6 py-3 border border-teal text-teal rounded-md hover:bg-teal/10 transition-colors;
+    @apply px-6 py-3 border border-teal text-teal rounded-md hover:bg-teal/10 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-md;
+  }
+
+  /* Card hover effects */
+  .hover-card {
+    @apply transition-all duration-300 hover:-translate-y-2 hover:shadow-xl;
+  }
+
+  /* Animated gradient backgrounds */
+  .animated-gradient {
+    background-size: 200% 200%;
+    @apply bg-gradient-to-r from-teal/10 via-teal/5 to-teal/10 animate-gradient-x;
+  }
+
+  /* Smooth scroll indicator */
+  .scroll-indicator {
+    @apply absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center;
+  }
+
+  .scroll-indicator-dot {
+    @apply w-2 h-2 bg-teal rounded-full my-1 animate-pulse-soft;
   }
 }
