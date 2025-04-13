@@ -82,10 +82,9 @@ const Navbar = () => {
                 activeSection === link.href.substring(1) && "text-teal"
               )}
               whileHover={{ scale: 1.05 }}
-              transition={{ type: "spring", stiffness: 400, damping: 10 }}
-              custom={index}
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
+              custom={index}
               transition={{ delay: 0.1 * index, duration: 0.5 }}
             >
               {link.label}
