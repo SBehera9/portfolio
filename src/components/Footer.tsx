@@ -1,6 +1,5 @@
-
 import React from 'react';
-import { Heart, GitHub, Linkedin, Mail, ArrowUp } from 'lucide-react';
+import { Heart, Github, Linkedin, Mail, ArrowUp } from 'lucide-react';
 
 const Footer = () => {
   const scrollToTop = () => {
@@ -22,7 +21,7 @@ const Footer = () => {
               aria-label="GitHub"
               className="text-white/80 hover:text-teal transition-colors"
             >
-              <GitHub size={24} />
+              <Github size={24} />
             </a>
             <a
               href="https://linkedin.com/in/"
