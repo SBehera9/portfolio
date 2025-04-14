@@ -1,168 +1,160 @@
 import React from 'react';
+import { Code, Layout, Cpu, Palette, Users, Award, Sparkles, Briefcase } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { Code, Layout, Cpu, Palette, Users } from 'lucide-react';
+import { cn } from '@/lib/utils'; 
 
-const skills = [
-  { 
-    category: 'Programming', 
-    items: ['React.js', 'Next.js', 'JavaScript', 'TypeScript'],
-    icon: <Code className="text-purple-500" size={20} /> 
+const sectionVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      duration: 0.5,
+      staggerChildren: 0.15, 
+    },
   },
-  { 
-    category: 'Frontend', 
-    items: ['HTML5', 'CSS3', 'Tailwind CSS', 'Bootstrap', 'SASS'],
-    icon: <Layout className="text-blue-500" size={20} /> 
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: "easeOut",
+    },
   },
-  { 
-    category: 'Tools & Platforms', 
-    items: ['Git', 'GitHub', 'VS Code', 'Figma', 'Vercel'],
-    icon: <Cpu className="text-green-500" size={20} /> 
+};
+
+
+const skillsData = [
+  {
+    category: 'Programming & Backend',
+    items: ['React.js', 'Next.js', 'JavaScript (ES6+)', 'TypeScript', 'Node.js (Basic)'],
+    icon: <Code className="text-indigo-500" size={20} />,
   },
-  { 
-    category: 'UI/UX', 
-    items: ['Responsive Design', 'Accessibility', 'Mobile-First', 'Performance'],
-    icon: <Palette className="text-pink-500" size={20} /> 
+  {
+    category: 'Frontend & Styling',
+    items: ['HTML5', 'CSS3', 'Tailwind CSS', 'SASS/SCSS', 'Framer Motion'],
+    icon: <Layout className="text-indigo-500" size={20} />,
   },
-  { 
-    category: 'Soft Skills', 
-    items: ['Collaboration', 'Problem Solving', 'Agile', 'Communication'],
-    icon: <Users className="text-orange-500" size={20} /> 
+   {
+    category: 'UI/UX Design',
+    items: ['Figma', 'Responsive Design', 'Wireframing', 'Prototyping', 'Accessibility'],
+    icon: <Palette className="text-indigo-500" size={20} />,
+  },
+  {
+    category: 'Tools & Platforms',
+    items: ['Git', 'GitHub', 'VS Code', 'Vercel', 'NPM/Yarn', 'Jira'],
+    icon: <Cpu className="text-indigo-500" size={20} />,
+  },
+  {
+    category: 'Soft Skills',
+    items: ['Collaboration', 'Problem-Solving', 'Agile Methodologies', 'Communication', 'Mentorship'],
+    icon: <Users className="text-indigo-500" size={20} />,
   }
 ];
 
 const About = () => {
-  return (
-    <section id="about" className="py-20 bg-gradient-to-b from-white to-purple-50">
-      <div className="container mx-auto px-4">
+  return ( 
+    <section id="about" className="py-24 md:py-32 bg-slate-50 overflow-hidden"> 
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl"> 
+
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-16 md:mb-20"
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }} 
+          viewport={{ once: true, amount: 0.5 }} 
+          transition={{ duration: 0.5 }}
         >
-          <h2 className="text-4xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent mb-4">
+          <h2 className="text-4xl lg:text-5xl font-extrabold text-slate-900 mb-4">
             About Me
           </h2>
-          <div className="w-20 h-1 bg-gradient-to-r from-purple-400 to-pink-400 mx-auto rounded-full" />
+          <div className="w-20 h-1.5 bg-gradient-to-r from-indigo-500 to-purple-500 mx-auto rounded-full" /> 
         </motion.div>
+
         
-        <div className="grid lg:grid-cols-3 gap-12">
-          {/* Bio Section */}
+        <motion.div
+          className="grid lg:grid-cols-3 gap-12 lg:gap-16 items-start" 
+          variants={sectionVariants}
+          initial="hidden"
+          whileInView="visible" 
+          viewport={{ once: true, amount: 0.2 }} 
+        >
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            viewport={{ once: true }}
-            className="lg:col-span-2 bg-white p-8 rounded-xl shadow-lg border border-gray-100"
+            className="lg:col-span-2 bg-white p-8 md:p-10 rounded-2xl shadow-lg border border-slate-100" 
+            variants={itemVariants} 
           >
-            <motion.h3 
-              className="text-2xl font-bold text-gray-800 mb-6"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ delay: 0.4 }}
-              viewport={{ once: true }}
-            >
-              Full Stack Developer & UI Specialist
-            </motion.h3>
-            
-            <div className="space-y-6">
-              <motion.p 
-                className="text-gray-600 leading-relaxed"
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                transition={{ delay: 0.2 }}
-                viewport={{ once: true }}
-              >
-                I'm a passionate developer with 2+ years of experience crafting beautiful, functional web applications. 
-                My expertise spans the full stack with a focus on creating intuitive user interfaces that deliver exceptional experiences.
-              </motion.p>
-              
-              <motion.p 
-                className="text-gray-600 leading-relaxed"
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                transition={{ delay: 0.3 }}
-                viewport={{ once: true }}
-              >
-                At <span className="font-medium text-purple-600">Nexus InfoTech</span>, I've led development on multiple projects, 
-                implementing modern React architectures and optimizing performance to create blazing-fast applications.
-              </motion.p>
-              
-              <motion.p 
-                className="text-gray-600 leading-relaxed"
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                transition={{ delay: 0.4 }}
-                viewport={{ once: true }}
-              >
-                When I'm not coding, you'll find me exploring new design trends, contributing to open source, 
-                or mentoring junior developers in my community.
-              </motion.p>
+            <h3 className="text-3xl font-bold text-slate-800 mb-6 flex items-center gap-3">
+               <Briefcase size={28} className="text-indigo-600" /> 
+              My Journey & Philosophy
+            </h3>
+
+            <div className="space-y-5 text-lg text-slate-600 leading-relaxed"> 
+              <p>
+                Hello! I'm a dedicated <strong className="text-slate-700">Frontend Developer</strong> with a keen eye for <strong className="text-slate-700">UI/UX Design</strong>. With over <strong className="text-indigo-600">2 years</strong> of hands-on experience, I specialize in building responsive, high-performance web applications using modern technologies like React and Next.js.
+              </p>
+              <p>
+                My background at <span className="font-semibold text-indigo-600">Nexus InfoTech</span> involved leading key projects, where I honed my skills in architecting scalable frontend systems and collaborating effectively within agile teams to deliver pixel-perfect user interfaces.
+              </p>
+              <p>
+                I'm driven by a passion for creating intuitive digital experiences that not only look great but are also accessible and enjoyable to use. Continuous learning is core to my process – you'll often find me exploring new design patterns, contributing to open-source projects, or experimenting with the latest web technologies.
+              </p>
             </div>
           </motion.div>
-          
-          {/* Skills Section */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            viewport={{ once: true }}
-            className="space-y-6"
-          >
-            <div className="bg-white p-6 rounded-xl shadow-lg border border-gray-100">
-              <h3 className="text-xl font-bold mb-6 text-gray-800 flex items-center gap-2">
-                <Code className="text-purple-500" size={24} />
-                <span>Technical Skills</span>
+
+          <div className="space-y-8">
+            <motion.div
+              className="bg-white p-8 rounded-2xl shadow-lg border border-slate-100" 
+              variants={itemVariants} 
+            >
+              <h3 className="text-2xl font-bold text-slate-800 mb-6 flex items-center gap-3">
+                 <Award size={24} className="text-indigo-600" /> 
+                My Skillset
               </h3>
-              
+
               <div className="space-y-6">
-                {skills.map((skillGroup, index) => (
-                  <motion.div 
-                    key={skillGroup.category}
-                    initial={{ opacity: 0, y: 10 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.1 * index }}
-                    viewport={{ once: true }}
-                  >
-                    <div className="flex items-center gap-2 mb-2">
-                      {skillGroup.icon}
-                      <h4 className="font-semibold text-gray-700">{skillGroup.category}</h4>
+                {skillsData.map((skillGroup) => (
+                  <div key={skillGroup.category}>
+                    <div className="flex items-center gap-3 mb-3">
+                      {React.cloneElement(skillGroup.icon, { className: "text-indigo-600 flex-shrink-0" })}
+                      <h4 className="font-semibold text-slate-700 text-lg">{skillGroup.category}</h4>
                     </div>
                     <div className="flex flex-wrap gap-2">
                       {skillGroup.items.map((skill) => (
-                        <motion.span
+                        <span
                           key={skill}
-                          whileHover={{ scale: 1.05 }}
-                          className="px-3 py-1 bg-gradient-to-b from-gray-50 to-white border border-gray-200 rounded-full text-sm text-gray-700 shadow-sm hover:shadow-md transition-all"
+                          className={cn(
+                            "px-3 py-1.5 rounded-md text-sm font-medium transition-colors duration-200", 
+                            "bg-indigo-50 text-indigo-700 border border-indigo-100 hover:bg-indigo-100 hover:border-indigo-200", 
+                          )}
                         >
                           {skill}
-                        </motion.span>
+                        </span>
                       ))}
                     </div>
-                  </motion.div>
+                  </div>
                 ))}
               </div>
-            </div>
-            
-            {/* Fun Fact Card */}
+            </motion.div>
+
             <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ delay: 0.8 }}
-              viewport={{ once: true }}
-              className="bg-gradient-to-r from-purple-500 to-pink-500 p-6 rounded-xl text-white"
+              className="bg-gradient-to-br from-indigo-600 to-purple-600 p-6 rounded-2xl text-white shadow-xl" 
+              variants={itemVariants} 
             >
-              <h4 className="font-bold text-lg mb-2">Fun Fact</h4>
-              <p className="text-purple-100">
-                I've contributed to 10+ open source projects and built 20+ web applications in the last 2 years!
+               <h4 className="font-semibold text-lg mb-3 flex items-center gap-2">
+                  <Sparkles size={20} className="text-yellow-300" /> 
+                  Quick Fact
+               </h4>
+              <p className="text-indigo-100 leading-snug"> 
+                Proud contributor to <strong className="font-bold text-white">10+ open-source</strong> projects and successfully launched over <strong className="font-bold text-white">20 web applications</strong> in the past two years!
               </p>
             </motion.div>
-          </motion.div>
-        </div>
+          </div>
+        </motion.div>
       </div>
     </section>
-  );
-};
+  ); 
+}; 
 
 export default About;

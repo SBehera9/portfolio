@@ -1,7 +1,52 @@
 import React, { useState } from 'react';
-import { Send, Mail, Phone, MapPin, CheckCircle } from 'lucide-react';
+import { Send, Mail, Phone, MapPin, CheckCircle, Loader2, MessageSquareQuote } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { useToast } from '@/hooks/use-toast';
+import { cn } from '@/lib/utils'; 
+import { x } from 'node_modules/framer-motion/dist/types.d-B50aGbjN';
+
+const useToast = () => {
+  const toast = ({ title, description, variant }: { title: string; description: string; variant?: 'default' | 'destructive' }) => {
+    console.log(`Toast (${variant || 'default'}): ${title} - ${description}`);
+    alert(`${title}\n${description}`);
+  };
+  return { toast };
+};
+
+const sectionVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      duration: 0.5,
+      staggerChildren: 0.15,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: "easeOut",
+    },
+  },
+};
+
+const formItemVariants = {
+  hidden: { opacity: 0, x: -15 },
+  visible: {
+      opacity: 1,
+      x: 0,
+      transition: {
+          duration: 0.4,
+          ease: "easeOut"
+      }
+  }
+};
+
 
 const Contact = () => {
   const { toast } = useToast();
@@ -19,131 +64,121 @@ const Contact = () => {
     setFormState(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
+
+    await new Promise(resolve => setTimeout(resolve, 1500)); 
+    setIsSubmitting(false);
+    setIsSubmitted(true);
+    setFormState({ name: '', email: '', subject: '', message: '' });
+    toast({
+        title: "Message Sent!",
+        description: "Thank you for reaching out. I'll be in touch soon.",
+    });
+  
     setTimeout(() => {
-      setIsSubmitting(false);
-      setIsSubmitted(true);
-      setFormState({
-        name: '',
-        email: '',
-        subject: '',
-        message: ''
-      });
-      
-      toast({
-        title: "Message sent!",
-        description: "Thank you for your message. I'll get back to you soon.",
-      });
-      
-      setTimeout(() => {
         setIsSubmitted(false);
-      }, 5000);
-    }, 1000);
+    }, 6000); 
   };
 
+
   return (
-    <section id="contact" className="py-20 bg-gradient-to-b from-white to-blue-50">
-      <div className="container mx-auto px-4">
+    <section id="contact" className="py-24 md:py-32 bg-slate-50 overflow-hidden"> 
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl"> 
+
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          className="text-center mb-16 md:mb-20"
+          initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
+          viewport={{ once: true, amount: 0.5 }}
+          transition={{ duration: 0.5 }}
         >
-          <h2 className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-teal-500 bg-clip-text text-transparent mb-4">
-            Get In Touch
+          <h2 className="text-4xl lg:text-5xl font-extrabold text-slate-900 mb-4 flex items-center justify-center gap-3">
+             <MessageSquareQuote size={40} className="text-indigo-600" /> 
+             Get In Touch
           </h2>
-          <div className="w-20 h-1 bg-gradient-to-r from-blue-400 to-teal-400 mx-auto rounded-full" />
+          <div className="w-20 h-1.5 bg-gradient-to-r from-indigo-500 to-purple-500 mx-auto rounded-full" /> 
         </motion.div>
-        
-        <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-          >
-            <p className="text-gray-700 mb-8 text-lg">
-              I'm currently available for freelance work and full-time positions. If you have a project that you want to get started,
-              think you need my help with something, or just want to say hi, feel free to contact me.
+
+        <motion.div
+            className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start" 
+            variants={sectionVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.1 }}
+        >
+          <motion.div className="lg:col-span-5 space-y-8" variants={itemVariants}>
+            <p className="text-lg text-slate-600 leading-relaxed">
+              I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision. Feel free to reach out using the form or contact details below.
             </p>
-            
+
             <div className="space-y-6">
-              <motion.div 
-                className="flex items-start bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition-shadow"
-                whileHover={{ x: 5 }}
-              >
-                <div className="p-3 bg-blue-100 rounded-lg mr-4">
-                  <Mail size={20} className="text-blue-600" />
-                </div>
-                <div>
-                  <h3 className="text-lg font-medium text-gray-800">Email</h3>
-                  <a href="mailto:sudarshanbehera808080@gmail.com" className="text-gray-600 hover:text-blue-600 transition-colors">
-                    sudarshanbehera808080@gmail.com
-                  </a>
-                </div>
-              </motion.div>
-              
-              <motion.div 
-                className="flex items-start bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition-shadow"
-                whileHover={{ x: 5 }}
-              >
-                <div className="p-3 bg-teal-100 rounded-lg mr-4">
-                  <Phone size={20} className="text-teal-600" />
-                </div>
-                <div>
-                  <h3 className="text-lg font-medium text-gray-800">Phone</h3>
-                  <a href="tel:+918328873021" className="text-gray-600 hover:text-teal-600 transition-colors">
-                    +91 8328873021
-                  </a>
-                </div>
-              </motion.div>
-              
-              <motion.div 
-                className="flex items-start bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition-shadow"
-                whileHover={{ x: 5 }}
-              >
-                <div className="p-3 bg-purple-100 rounded-lg mr-4">
-                  <MapPin size={20} className="text-purple-600" />
-                </div>
-                <div>
-                  <h3 className="text-lg font-medium text-gray-800">Location</h3>
-                  <p className="text-gray-600">
-                    Berhampur, Odisha, India
-                  </p>
-                </div>
-              </motion.div>
+              {[
+                { icon: Mail, color: 'indigo', title: 'Email', value: 'sudarshanbehera808080@gmail.com', href: 'mailto:sudarshanbehera808080@gmail.com' },
+                { icon: Phone, color: 'teal', title: 'Phone', value: '+91 83288 73021', href: 'tel:+918328873021' },
+                { icon: MapPin, color: 'purple', title: 'Location', value: 'Berhampur, Odisha, India', href: null }
+              ].map((item) => (
+                <motion.div
+                  key={item.title}
+                  className="flex items-start bg-white p-5 rounded-xl shadow-md border border-slate-100 transition-shadow hover:shadow-lg"
+                  whileHover={{ y: -4 }} 
+                >
+                  <div className={cn(
+                      "flex-shrink-0 w-12 h-12 rounded-lg mr-4 flex items-center justify-center",
+                      `bg-${item.color}-100`
+                  )}>
+                    <item.icon size={22} className={`text-${item.color}-600`} />
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-semibold text-slate-800 mb-0.5">{item.title}</h3>
+                    {item.href ? (
+                       <a href={item.href} className={`text-slate-600 hover:text-${item.color}-700 transition-colors duration-200 break-words`}>
+                        {item.value}
+                      </a>
+                    ) : (
+                      <p className="text-slate-600 break-words">{item.value}</p>
+                    )}
+                  </div>
+                </motion.div>
+              ))}
             </div>
           </motion.div>
-          
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-          >
-            <form onSubmit={handleSubmit} className="bg-white p-8 rounded-xl shadow-lg">
+
+          <motion.div className="lg:col-span-7" variants={itemVariants}>
+            <div className="bg-white p-8 md:p-10 rounded-2xl shadow-xl border border-slate-100">
               {isSubmitted ? (
-                <motion.div 
+                <motion.div
+                  key="success" 
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  className="flex flex-col items-center justify-center py-8"
+                  exit={{ opacity: 0, scale: 0.9 }} 
+                  className="flex flex-col items-center justify-center text-center py-10"
                 >
-                  <CheckCircle size={48} className="text-green-500 mb-4" />
-                  <h3 className="text-xl font-medium text-gray-800 mb-2">Message Sent!</h3>
-                  <p className="text-gray-600 text-center">
-                    Thank you for your message. I'll get back to you soon.
+                  <motion.div
+                      initial={{ scale: 0 }}
+                      animate={{ scale: 1 }}
+                      transition={{ type: "spring", stiffness: 200, damping: 15, delay: 0.1 }}
+                  >
+                      <CheckCircle size={60} className="text-green-500 mb-5" />
+                  </motion.div>
+                  <h3 className="text-2xl font-semibold text-slate-800 mb-3">Message Sent Successfully!</h3>
+                  <p className="text-slate-600 max-w-sm">
+                    Thank you for getting in touch. I appreciate your message and will respond as soon as possible.
                   </p>
                 </motion.div>
               ) : (
-                <>
-                  <div className="mb-6">
-                    <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
-                      Name
+                <motion.form
+                    key="form" 
+                    onSubmit={handleSubmit}
+                    className="space-y-6"
+                    variants={{ visible: { transition: { staggerChildren: 0.1 } } }} 
+                    initial="hidden"
+                    animate="visible" 
+                >
+                  <motion.div variants={formItemVariants}>
+                    <label htmlFor="name" className="block text-sm font-medium text-slate-700 mb-1.5">
+                      Full Name
                     </label>
                     <input
                       type="text"
@@ -152,13 +187,15 @@ const Contact = () => {
                       value={formState.name}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      autoComplete="name"
+                      placeholder="e.g., John Doe"
+                      className="w-full px-4 py-2.5 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500 transition duration-200 ease-in-out bg-slate-50/50"
                     />
-                  </div>
-                  
-                  <div className="mb-6">
-                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                      Email
+                  </motion.div>
+
+                  <motion.div variants={formItemVariants}>
+                    <label htmlFor="email" className="block text-sm font-medium text-slate-700 mb-1.5">
+                      Email Address
                     </label>
                     <input
                       type="email"
@@ -167,12 +204,14 @@ const Contact = () => {
                       value={formState.email}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      autoComplete="email"
+                      placeholder="e.g., john.doe@example.com"
+                      className="w-full px-4 py-2.5 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500 transition duration-200 ease-in-out bg-slate-50/50"
                     />
-                  </div>
-                  
-                  <div className="mb-6">
-                    <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-2">
+                  </motion.div>
+
+                  <motion.div variants={formItemVariants}>
+                    <label htmlFor="subject" className="block text-sm font-medium text-slate-700 mb-1.5">
                       Subject
                     </label>
                     <input
@@ -182,13 +221,14 @@ const Contact = () => {
                       value={formState.subject}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      placeholder="e.g., Project Inquiry"
+                      className="w-full px-4 py-2.5 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500 transition duration-200 ease-in-out bg-slate-50/50"
                     />
-                  </div>
-                  
-                  <div className="mb-6">
-                    <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-                      Message
+                  </motion.div>
+
+                  <motion.div variants={formItemVariants}>
+                    <label htmlFor="message" className="block text-sm font-medium text-slate-700 mb-1.5">
+                      Your Message
                     </label>
                     <textarea
                       id="message"
@@ -197,30 +237,41 @@ const Contact = () => {
                       value={formState.message}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      placeholder="Tell me about your project or inquiry..."
+                      className="w-full px-4 py-2.5 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500 transition duration-200 ease-in-out bg-slate-50/50 resize-y min-h-[120px]"
                     />
-                  </div>
-                  
-                  <motion.button
-                    type="submit"
-                    disabled={isSubmitting}
-                    className="w-full px-6 py-3 bg-gradient-to-r from-blue-600 to-teal-500 text-white font-medium rounded-lg shadow-lg hover:shadow-xl transition-all flex items-center justify-center"
-                    whileHover={{ y: -2 }}
-                    whileTap={{ scale: 0.98 }}
-                  >
-                    {isSubmitting ? (
-                      <span>Sending...</span>
-                    ) : (
-                      <>
-                        Send Message <Send size={18} className="ml-2" />
-                      </>
-                    )}
-                  </motion.button>
-                </>
+                  </motion.div>
+
+                  <motion.div variants={formItemVariants}>
+                    <motion.button
+                      type="submit"
+                      disabled={isSubmitting}
+                      className={cn(
+                        "w-full px-7 py-3 text-base font-semibold rounded-lg shadow-md hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500",
+                        isSubmitting
+                          ? "bg-slate-400 cursor-not-allowed"
+                          : "bg-gradient-to-r from-indigo-600 to-purple-600 text-white transform hover:-translate-y-1"
+                      )}
+                      whileHover={!isSubmitting ? { scale: 1.03 } : {}} 
+                      whileTap={!isSubmitting ? { scale: 0.97 } : {}}
+                    >
+                      {isSubmitting ? (
+                        <>
+                          <Loader2 size={20} className="animate-spin mr-2" />
+                          Sending...
+                        </>
+                      ) : (
+                        <>
+                          Send Message <Send size={18} />
+                        </>
+                      )}
+                    </motion.button>
+                  </motion.div>
+                </motion.form>
               )}
-            </form>
+            </div>
           </motion.div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

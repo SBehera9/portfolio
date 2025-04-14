@@ -1,175 +1,173 @@
 import React from 'react';
-import { ArrowRight, Github, Linkedin, Mail } from 'lucide-react';
+import { ArrowRight, Github, Linkedin, Mail, Send, Briefcase } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { cn } from '@/lib/utils'; 
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1, 
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+      ease: "easeOut",
+    },
+  },
+};
+
+const imageVariants = {
+    hidden: { opacity: 0, scale: 0.8, rotate: -5 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      rotate: 0,
+      transition: {
+        type: "spring",
+        stiffness: 100,
+        damping: 15,
+        duration: 0.6,
+        delay: 0.3 
+      },
+    },
+  };
+
 
 const Hero = () => {
+  const socialLinks = [
+    { icon: <Github size={22} />, href: "https://github.com/", label: "GitHub Profile" },
+    { icon: <Linkedin size={22} />, href: "https://linkedin.com/in/", label: "LinkedIn Profile" },
+    { icon: <Mail size={22} />, href: "mailto:sudarshanbehera808080@gmail.com", label: "Send an Email" }
+  ];
+
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-50 via-purple-50 to-teal-50 py-16 px-4">
-      <div className="container mx-auto max-w-6xl px-4">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          {/* Text Content */}
-          <motion.div 
-            className="order-2 md:order-1"
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
+    <section
+      id="home"
+      className="min-h-screen flex items-center justify-center bg-slate-50 py-24 md:py-32 px-4 sm:px-6 lg:px-8 overflow-hidden" 
+    >
+      <div className="container mx-auto max-w-7xl"> 
+        <div className="grid md:grid-cols-2 gap-16 lg:gap-24 items-center"> 
+
+          <motion.div
+            className="order-2 md:order-1 text-center md:text-left"
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
           >
-            <motion.p 
-              className="text-purple-600 font-medium mb-3"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.2, duration: 0.4 }}
+            <motion.p
+              className="text-indigo-600 font-semibold mb-3 text-lg flex items-center justify-center md:justify-start"
+              variants={itemVariants}
             >
-              👋 Hello, I'm
+              <span className="inline-block mr-2 animate-wave">👋</span> 
+              Hello, I'm
             </motion.p>
-            
-            <motion.h1 
-              className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 leading-tight bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 bg-clip-text text-transparent"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.4, duration: 0.4 }}
+
+            <motion.h1
+              className="text-5xl lg:text-6xl font-extrabold text-slate-900 mb-4 leading-tight" 
+              variants={itemVariants}
             >
               Sudarshan Behera
             </motion.h1>
-            
-            <motion.h2 
-              className="text-xl md:text-2xl text-gray-700 mb-6 font-medium"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.6, duration: 0.4 }}
+
+            <motion.h2
+              className="text-2xl text-slate-700 mb-6 font-medium" 
+              variants={itemVariants}
             >
-              Frontend Developer & <span className="text-pink-600">UI Designer</span>
+              Frontend Developer & <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600 font-semibold">UI Designer</span> {/* Gradient highlight */}
             </motion.h2>
-            
-            <motion.p 
-              className="text-gray-600 mb-8 max-w-md leading-relaxed"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.8, duration: 0.4 }}
+
+            <motion.p
+              className="text-slate-600 text-lg mb-10 max-w-lg mx-auto md:mx-0 leading-relaxed" 
+              variants={itemVariants}
             >
-              I create beautiful, functional web experiences with React, Next.js, and modern CSS. 
-              Passionate about color theory, animations, and user-centered design.
+              Crafting intuitive and engaging digital experiences with a focus on clean code, modern design principles, and user satisfaction.
             </motion.p>
-            
-            <motion.div 
-              className="flex flex-wrap gap-4 mb-10"
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.0, duration: 0.4 }}
+
+            <motion.div
+              className="flex flex-col sm:flex-row flex-wrap justify-center md:justify-start gap-4 mb-12" 
+              variants={itemVariants}
             >
-              <a 
-                href="#projects" 
-                className="px-5 py-2.5 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-medium rounded-lg transition-all flex items-center gap-2 shadow-lg hover:shadow-purple-500/30"
+              <motion.a
+                href="#projects"
+                className="px-7 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold rounded-lg shadow-md hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 transform hover:-translate-y-1"
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.97 }}
               >
+                <Briefcase size={18} /> 
                 View My Work
-                <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
-              </a>
-              <a 
-                href="#contact" 
-                className="px-5 py-2.5 border-2 border-purple-500 text-purple-600 hover:bg-purple-50 font-medium rounded-lg transition-all flex items-center gap-2"
+              </motion.a>
+
+              <motion.a
+                href="#contact"
+                className="px-7 py-3 border-2 border-indigo-600 text-indigo-700 hover:bg-indigo-50/50 font-semibold rounded-lg transition-all duration-300 flex items-center justify-center gap-2 transform hover:-translate-y-1"
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.97 }}
               >
+                 <Send size={18} /> 
                 Let's Talk
-              </a>
+              </motion.a>
             </motion.div>
-            
-            <motion.div 
-              className="flex items-center gap-5"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 1.2, duration: 0.4 }}
+
+            <motion.div
+                className="flex items-center justify-center md:justify-start gap-5"
+                variants={itemVariants}
             >
-              <a 
-                href="https://github.com/" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                aria-label="GitHub"
-                className="text-gray-600 hover:text-purple-600 transition-colors p-2 hover:bg-white rounded-full hover:shadow-sm"
-              >
-                <Github size={20} />
-              </a>
-              <a 
-                href="https://linkedin.com/in/" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                aria-label="LinkedIn"
-                className="text-gray-600 hover:text-blue-600 transition-colors p-2 hover:bg-white rounded-full hover:shadow-sm"
-              >
-                <Linkedin size={20} />
-              </a>
-              <a 
-                href="mailto:sudarshanbehera808080@gmail.com" 
-                aria-label="Email"
-                className="text-gray-600 hover:text-pink-600 transition-colors p-2 hover:bg-white rounded-full hover:shadow-sm"
-              >
-                <Mail size={20} />
-              </a>
+              <span className="text-sm font-medium text-slate-500 mr-2">Connect:</span>
+              {socialLinks.map((link, index) => (
+                <motion.a
+                  key={index}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={link.label}
+                  title={link.label} 
+                  className="text-slate-500 hover:text-indigo-600 transition-colors duration-300 p-1.5" 
+                  whileHover={{ y: -3, scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  {link.icon}
+                </motion.a>
+              ))}
             </motion.div>
           </motion.div>
 
-          {/* Colorful Avatar */}
-          <motion.div 
-            className="order-1 md:order-2 flex justify-center relative"
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5 }}
+          <motion.div
+            className="order-1 md:order-2 flex justify-center items-center"
+            variants={imageVariants}
+            initial="hidden"
+            animate="visible"
           >
-            <div className="relative w-64 h-64 md:w-72 md:h-72">
-              {/* Colorful background elements */}
-              <motion.div 
-                className="absolute -top-4 -left-4 w-full h-full rounded-full bg-gradient-to-br from-purple-200 to-pink-200 z-0"
-                animate={{
-                  rotate: [0, 360],
-                }}
-                transition={{
-                  duration: 25,
-                  repeat: Infinity,
-                  ease: "linear"
-                }}
-              />
+            <div className="relative w-72 h-72 md:w-80 md:h-80 lg:w-96 lg:h-96">
               
-              <motion.div 
-                className="absolute -bottom-4 -right-4 w-full h-full rounded-full bg-gradient-to-br from-blue-200 to-teal-200 z-0"
-                animate={{
-                  rotate: [360, 0],
-                }}
-                transition={{
-                  duration: 30,
-                  repeat: Infinity,
-                  ease: "linear"
-                }}
-              />
-              
-              {/* Main avatar */}
-              <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-white shadow-xl z-10 bg-white flex items-center justify-center">
-                <div className="text-center p-6">
-                  <div className="text-6xl font-bold bg-gradient-to-r from-purple-600 via-pink-500 to-blue-500 bg-clip-text text-transparent mb-2">
-                    SB
-                  </div>
-                  <div className="text-sm font-medium text-gray-500">
-                    Available for collaborations
-                  </div>
-                </div>
-              </div>
-              
-              {/* Floating dots */}
-              {[...Array(6)].map((_, i) => (
-                <motion.div
-                  key={i}
-                  className={`absolute rounded-full ${i % 3 === 0 ? 'bg-purple-400' : i % 3 === 1 ? 'bg-pink-400' : 'bg-blue-400'} ${i < 3 ? 'w-3 h-3' : 'w-2 h-2'}`}
-                  style={{
-                    top: `${Math.random() * 30 + 10}%`,
-                    left: `${Math.random() * 30 + 10}%`,
-                  }}
-                  animate={{
-                    y: [0, 10, 0],
-                  }}
-                  transition={{
-                    duration: 3 + Math.random() * 3,
-                    repeat: Infinity,
-                    ease: "easeInOut"
-                  }}
+                <div className="absolute inset-0 bg-gradient-to-br from-indigo-100 via-purple-50 to-slate-50 rounded-3xl transform rotate-[-8deg] scale-105 opacity-70 blur-sm"></div>
+                <div className="absolute inset-0 bg-gradient-to-tl from-purple-100 via-indigo-50 to-slate-50 rounded-3xl transform rotate-[6deg] scale-100 opacity-60 blur-sm"></div>
+
+                <img
+                  src="/placeholder-profile.webp"
+                  alt="Sudarshan Behera - Frontend Developer & UI Designer"
+                  width={384} 
+                  height={384} 
+                  className="relative w-full h-full object-cover rounded-3xl shadow-xl border-4 border-white" 
+                  
                 />
-              ))}
+                 <motion.div
+                    className="absolute -bottom-4 -right-4 bg-white shadow-lg rounded-full p-3 border border-slate-200"
+                    animate={{ y: [0, -8, 0] }}
+                    transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                 >
+                     <div className="w-8 h-8 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-full flex items-center justify-center text-white text-xs font-bold">
+                        UI/UX
+                     </div>
+                 </motion.div>
             </div>
           </motion.div>
         </div>
@@ -179,3 +177,4 @@ const Hero = () => {
 };
 
 export default Hero;
+
