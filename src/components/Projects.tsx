@@ -7,17 +7,17 @@ const projectsData = [
   {
     id: 1,
     title: 'G3 Cyber Space',
-    description: 'A sleek, modern website showcasing cybersecurity services, educational content, and company information.',
-    image: '/images/projects/g3cyberspace-mockup.webp', 
+    description: 'A sleek, modern website showcasing cybersecurity services and company information.',
+    image: '/G3.jpeg', 
     technologies: ['React', 'TypeScript', 'Tailwind CSS', 'Framer Motion', 'Responsive Design'],
-    liveLink: 'https://g3cyberspace.com', 
-    githubLink: 'https://github.com/yourusername/g3-cyberspace', 
+    liveLink: 'https://www.g3cyberspace.com/', 
+    githubLink: 'https://github.com/SBehera9/G3', 
     period: 'Jan 2025 - Apr 2025', 
     details: [
       'Developed a fully responsive tech-focused website from Figma designs',
       'Implemented interactive UI elements and animations using Framer Motion',
       'Optimized performance and accessibility for enhanced user engagement',
-      'Structured content effectively for showcasing services and educational resources'
+      'Structured content effectively for showcasing services and resources'
     ],
     icon: <Monitor className="text-indigo-500 dark:text-indigo-400" size={20} />
   },
@@ -25,15 +25,15 @@ const projectsData = [
     id: 2,
     title: 'Varsada E-Commerce',
     description: 'A feature-rich e-commerce platform with dynamic user/admin dashboards, product management, and cart functionalities.',
-    image: '/images/projects/varsada-mockup.webp', 
-    technologies: ['Next.js', 'React', 'Tailwind CSS', 'Context API', 'E-commerce'],
-    liveLink: 'https://varsada.com', 
-    githubLink: 'https://github.com/yourusername/varsada-ecommerce', 
+    image: '/Varsada.jpeg', 
+    technologies: ['React', 'Tailwind CSS', 'API', 'TypeScript'],
+    liveLink: 'https://varsada.com/', 
+    githubLink: 'https://github.com/SBehera9/varsada-mvp', 
     period: 'Aug 2024 - Jan 2025', 
     details: [
       'Built separate dashboards for user profiles and admin management',
       'Implemented core e-commerce features: product listings, cart, wishlist',
-      'Utilized Context API for state management (e.g., cart updates)',
+      'Utilized Context API for state management',
       'Ensured a seamless checkout process with responsive forms'
     ],
     icon: <Layout className="text-purple-500 dark:text-purple-400" size={20} />
@@ -42,10 +42,10 @@ const projectsData = [
     id: 3,
     title: 'Nexus Infotech Website',
     description: 'A professional corporate website designed to represent Nexus Infotech\'s brand, services, and project portfolio.',
-    image: '/images/projects/nexus-mockup.webp', 
-    technologies: ['React', 'CSS Modules', 'Responsive Design', 'UI/UX'],
+    image: '/Nexus.png', 
+    technologies: ['Next JS','TypeScript', 'Tailwind CSS', 'Responsive Design', 'UI/UX'],
     liveLink: 'https://nexusinfotech.co', 
-    githubLink: null, 
+    githubLink: 'https://github.com/SBehera9/nexus-infotech', 
     period: 'Aug 2023 - Aug 2024', 
     details: [
       'Translated company branding into a cohesive web presence',
