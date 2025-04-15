@@ -35,8 +35,8 @@ const footerNavLinks = [
 ];
 
 const socialLinks = [
-  { icon: Github, href: "https://github.com/yourusername", label: "GitHub Profile" },
-  { icon: Linkedin, href: "https://linkedin.com/in/yourusername", label: "LinkedIn Profile" },
+  { icon: Github, href: "https://github.com/SBehera9", label: "GitHub Profile" },
+  { icon: Linkedin, href: "https://www.linkedin.com/in/sudarshan-behera-024069299/", label: "LinkedIn Profile" },
   { icon: Mail, href: "mailto:sudarshanbehera808080@gmail.com", label: "Send an Email" }
 ];
 
@@ -102,7 +102,7 @@ const Footer = () => {
               Sudarshan Behera
             </p>
             <p className="text-slate-400 text-base">
-              Frontend Developer & UI Designer
+              Frontend Developer | FullStack Developer & UI Designer
             </p>
           </motion.div>
 
@@ -147,7 +147,7 @@ const Footer = () => {
             onClick={scrollToTop}
             className={cn(
               "p-3 rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-slate-900 focus:ring-indigo-500",
-              "bg-indigo-600 text-white shadow-lg hover:shadow-xl" // Base styles define hover background implicitly via whileHover
+              "bg-indigo-600 text-white shadow-lg hover:shadow-xl" 
             )}
             aria-label="Scroll back to top"
             title="Scroll back to top"
