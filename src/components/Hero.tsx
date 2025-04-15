@@ -61,10 +61,11 @@ const Hero = () => {
 
   const skills = [
     { name: "React", color: "bg-blue-500" },
+    { name: "Next JS", color: "bg-pink-500" },
     { name: "JavaScript", color: "bg-yellow-500" },
     { name: "TypeScript", color: "bg-blue-600" },
     { name: "Tailwind", color: "bg-cyan-500" },
-    { name: "Figma", color: "bg-purple-500" },
+    { name: "Bootstrap", color: "bg-purple-500" },
   ];
 
  
@@ -199,7 +200,7 @@ const Hero = () => {
               <div className="absolute inset-0 bg-gradient-to-tl from-purple-100 via-indigo-50 to-slate-50 dark:from-purple-900/40 dark:via-indigo-900/20 dark:to-slate-800/30 rounded-3xl transform rotate-[6deg] scale-100 opacity-60 dark:opacity-40 blur-sm"></div>
 
               <img
-                src="/placeholder-profile.webp"
+                src="/SB.jpg"
                 alt="Sudarshan Behera - Frontend Developer & UI Designer"
                 width={384}
                 height={384}

@@ -146,7 +146,7 @@ const About = () => {
                   <Award size={24} />
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold text-slate-800 dark:text-slate-100 mb-2">My Skillset</h3>
+                  <h3 className="text-2xl font-bold text-slate-800 dark:text-slate-100 mb-2 ">My Skillset</h3>
                   <div className="w-12 h-1 bg-gradient-to-r from-purple-500 to-indigo-500 dark:from-purple-400 dark:to-indigo-400 rounded-full"></div> 
                 </div>
               </div>
