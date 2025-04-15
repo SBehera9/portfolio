@@ -74,46 +74,36 @@ const Navbar = () => {
     };
   }, [isMenuOpen]); 
 
-   useEffect(() => {
-    const isDarkPreferred = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  useEffect(() => {
+    // Default to light mode, only check localStorage for override
     const storedPreference = localStorage.getItem('darkMode');
-    let initialDarkMode = false;
-
-    if (storedPreference !== null) {
-      initialDarkMode = storedPreference === 'true';
-    } else {
-      initialDarkMode = isDarkPreferred;
-    }
-
-    setDarkMode(initialDarkMode);
-    if (initialDarkMode) {
+    if (storedPreference === 'true') {
+      setDarkMode(true);
       document.documentElement.classList.add('dark');
-    } else {
-       document.documentElement.classList.remove('dark');
     }
-   }, []); 
+  }, []); 
 
   const toggleDarkMode = () => {
     setDarkMode(prevMode => {
-        const newMode = !prevMode;
-        if (newMode) {
-            document.documentElement.classList.add('dark');
-            localStorage.setItem('darkMode', 'true');
-        } else {
-            document.documentElement.classList.remove('dark');
-            localStorage.setItem('darkMode', 'false');
-        }
-        return newMode;
+      const newMode = !prevMode;
+      if (newMode) {
+        document.documentElement.classList.add('dark');
+        localStorage.setItem('darkMode', 'true');
+      } else {
+        document.documentElement.classList.remove('dark');
+        localStorage.setItem('darkMode', 'false');
+      }
+      return newMode;
     });
   };
 
   return (
     <header
       className={cn(
-        'fixed top-0 left-0 w-full z-50 transition-all duration-500 ease-in-out',
+        'fixed top-0 left-0 w-full z-50 transition-all duration-300 ease-in-out',
         scrolled
-          ? 'bg-white/90 dark:bg-gray-900/90 backdrop-blur-lg shadow-sm border-b border-gray-100 dark:border-gray-800 py-3'
-          : 'bg-white/80 dark:bg-gray-900/80 backdrop-blur-md py-4'
+          ? 'bg-white/95 backdrop-blur-lg shadow-sm border-b border-gray-100 dark:bg-gray-900/95 dark:border-gray-800 py-3'
+          : 'bg-white/90 backdrop-blur-md dark:bg-gray-900/90 py-4'
       )}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
@@ -129,7 +119,7 @@ const Navbar = () => {
           <span className="bg-gradient-to-br from-indigo-500 to-purple-600 dark:from-indigo-600 dark:to-purple-700 text-white p-1.5 rounded-md shadow-sm">
             <Package size={20} strokeWidth={2.5} />
           </span>
-          <span className="">MyPortfolio</span> 
+          <span className="font-medium">Portfolio</span>
         </motion.a>
 
         <nav className="hidden md:flex items-center space-x-1">
@@ -140,8 +130,8 @@ const Navbar = () => {
               className={cn(
                 "px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 relative group",
                 activeSection === link.href.substring(1)
-                  ? "text-indigo-600 dark:text-indigo-400 font-semibold"
-                  : "text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100/60 dark:hover:bg-gray-800/60"
+                  ? "text-indigo-600 dark:text-indigo-400 font-medium"
+                  : "text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
               )}
               initial="hidden"
               animate="visible"
@@ -154,7 +144,7 @@ const Navbar = () => {
               {link.label}
               {activeSection === link.href.substring(1) && (
                 <motion.div
-                  className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-4/5 h-0.5 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full"
+                  className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-4/5 h-0.5 bg-indigo-500 rounded-full"
                   layoutId="activeIndicatorDesktop" 
                   transition={{ type: "spring", stiffness: 350, damping: 30 }}
                 />
@@ -180,7 +170,7 @@ const Navbar = () => {
             href="/resume.pdf" 
             target="_blank"
             rel="noopener noreferrer"
-            className="ml-2 px-4 py-2 bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-700 dark:to-purple-700 text-white text-sm font-medium rounded-lg hover:from-indigo-700 hover:to-purple-700 transition-all duration-300 shadow-md hover:shadow-lg flex items-center gap-2 transform hover:-translate-y-0.5"
+            className="ml-2 px-4 py-2 bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-700 dark:hover:bg-indigo-800 text-white text-sm font-medium rounded-lg transition-all duration-300 shadow hover:shadow-md flex items-center gap-2"
             initial="hidden"
             animate="visible"
             variants={navItemVariants}
@@ -190,8 +180,7 @@ const Navbar = () => {
             title="Download my Resume"
           >
             <FileText size={16} />
-            <span className="hidden lg:inline">Resume</span> 
-             <span className="lg:hidden">CV</span> 
+            <span>Resume</span>
           </motion.a>
         </nav>
 
@@ -222,7 +211,7 @@ const Navbar = () => {
               >
                 {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
               </motion.div>
-             </AnimatePresence>
+            </AnimatePresence>
           </motion.button>
         </div>
       </div>
@@ -250,8 +239,8 @@ const Navbar = () => {
                   className={cn(
                     "block py-4 px-6 text-base font-medium border-b border-gray-100 dark:border-gray-800 transition-colors duration-200 relative",
                     activeSection === link.href.substring(1)
-                      ? "text-indigo-600 dark:text-indigo-400 bg-indigo-50/50 dark:bg-indigo-900/20 font-semibold"
-                      : "text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-white"
+                      ? "text-indigo-600 dark:text-indigo-400 bg-indigo-50/50 dark:bg-indigo-900/20 font-medium"
+                      : "text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
                   )}
                   variants={mobileNavItemVariants}
                   initial="hidden"
@@ -265,7 +254,7 @@ const Navbar = () => {
                 >
                   {activeSection === link.href.substring(1) && (
                     <motion.div
-                      className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-indigo-500 to-purple-500"
+                      className="absolute left-0 top-0 bottom-0 w-1 bg-indigo-500"
                       layoutId="activeIndicatorMobile" 
                     />
                   )}
@@ -276,7 +265,7 @@ const Navbar = () => {
                 href="/resume.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block w-full py-4 px-6 bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-700 dark:to-purple-700 text-white text-base font-medium hover:from-indigo-700 hover:to-purple-700 text-center transition-all duration-300 flex items-center justify-center gap-2 mt-auto" // Pushed slightly apart
+                className="block w-full py-4 px-6 bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-700 dark:hover:bg-indigo-800 text-white text-base font-medium text-center transition-all duration-300 flex items-center justify-center gap-2"
                 variants={mobileNavItemVariants}
                 initial="hidden"
                 animate="visible"
