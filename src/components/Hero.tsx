@@ -208,7 +208,7 @@ const Hero = () => {
                 alt="Sudarshan Behera - Frontend Developer & UI Designer"
                 width={384}
                 height={384}
-                className="relative w-full h-full object-cover rounded-3xl shadow-xl border-4 border-white dark:border-slate-700" 
+                className="relative w-full h-full object-cover rounded-full shadow-xl border-4 border-white dark:border-slate-700" 
               />
 
               <motion.div
