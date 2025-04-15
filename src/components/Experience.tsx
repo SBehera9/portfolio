@@ -40,13 +40,7 @@ const certificationData = [
     period: '2023',
     icon: <Award className="text-teal-500 dark:text-teal-400" size={20} />
   },
-  {
-    id: 2,
-    name: 'React Advanced Concepts',
-    institution: 'Udemy',
-    period: '2023',
-    icon: <Award className="text-teal-500 dark:text-teal-400" size={20} />
-  }
+  
 ];
 
 const sectionVariants = {
