@@ -60,12 +60,15 @@ const Hero = () => {
   ];
 
   const skills = [
-    { name: "React", color: "bg-blue-500" },
-    { name: "Next JS", color: "bg-pink-500" },
-    { name: "JavaScript", color: "bg-yellow-500" },
-    { name: "TypeScript", color: "bg-blue-600" },
-    { name: "Tailwind", color: "bg-cyan-500" },
-    { name: "Bootstrap", color: "bg-purple-500" },
+    { name: "HTML", color: "bg-blue-500" },
+    { name: "CSS", color: "bg-pink-500" },
+    { name: "Tailwind CSS", color: "bg-red-500" },
+    { name: "Bootstrap", color: "bg-yellow-500" },
+    { name: "JavaScript", color: "bg-cyan-500" },
+    { name: "React", color: "bg-purple-500" },
+    { name: "Next JS", color: "bg-green-500" },
+    { name: "TypeScript", color: "bg-violet-600" },
+    { name: "Node JS", color: "bg-fuchsia-500" },
   ];
 
  
@@ -73,7 +76,7 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="min-h-screen flex items-center justify-center bg-gradient-to-br from-white to-slate-50 dark:from-gray-900 dark:to-slate-800 py-24 md:py-32 px-4 sm:px-6 lg:px-8 overflow-hidden relative" 
+      className="min-h-screen flex items-center bg- justify-center bg-gradient-to-br from-white to-slate-50 dark:from-gray-900 dark:to-slate-800 py-24 md:py-32 px-4 sm:px-6 lg:px-8 overflow-hidden relative" 
     >
       <div className="absolute top-20 left-10 w-32 h-32 rounded-full bg-indigo-100/50 dark:bg-indigo-900/30 blur-3xl -z-10"></div>
       <div className="absolute bottom-20 right-10 w-40 h-40 rounded-full bg-purple-100/50 dark:bg-purple-900/30 blur-3xl -z-10"></div>
