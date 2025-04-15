@@ -54,8 +54,8 @@ const floatingElementVariants = {
 
 const Hero = () => {
   const socialLinks = [
-    { icon: <Github size={22} />, href: "https://github.com/yourusername", label: "GitHub Profile" },
-    { icon: <Linkedin size={22} />, href: "https://linkedin.com/in/yourusername", label: "LinkedIn Profile" },
+    { icon: <Github size={22} />, href: "https://github.com/SBehera9", label: "GitHub Profile" },
+    { icon: <Linkedin size={22} />, href: "https://www.linkedin.com/in/sudarshan-behera-024069299/", label: "LinkedIn Profile" },
     { icon: <Mail size={22} />, href: "mailto:sudarshanbehera808080@gmail.com", label: "Send an Email" }
   ];
 
