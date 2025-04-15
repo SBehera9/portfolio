@@ -33,9 +33,7 @@ const Navbar = () => {
       const isScrolled = window.scrollY > 20;
       setScrolled(isScrolled);
 
-      const sections = navLinks.map(link => 
-        document.getElementById(link.href.substring(1))
-      );
+      const sections = navLinks.map(link => document.getElementById(link.href.substring(1)));
       const scrollPosition = window.scrollY + window.innerHeight / 3;
 
       let currentSection = 'home';
@@ -51,6 +49,7 @@ const Navbar = () => {
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll();
+
     return () => window.removeEventListener('scroll', handleScroll);
   }, []); 
 
@@ -65,36 +64,53 @@ const Navbar = () => {
   }, []);
 
   useEffect(() => {
-    document.body.style.overflow = isMenuOpen ? 'hidden' : 'auto';
+    if (isMenuOpen) {
+      document.body.style.overflow = 'hidden'; 
+    } else {
+      document.body.style.overflow = 'auto'; 
+    }
     return () => {
       document.body.style.overflow = 'auto';
     };
   }, [isMenuOpen]); 
 
-  useEffect(() => {
+   useEffect(() => {
+    const isDarkPreferred = window.matchMedia('(prefers-color-scheme: dark)').matches;
     const storedPreference = localStorage.getItem('darkMode');
-    
-    const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    
-    const initialMode = storedPreference 
-      ? storedPreference === 'true'
-      : false; 
-    
-    setDarkMode(initialMode);
-    document.documentElement.classList.toggle('dark', initialMode);
-  }, []); 
+    let initialDarkMode = false;
+
+    if (storedPreference !== null) {
+      initialDarkMode = storedPreference === 'true';
+    } else {
+      initialDarkMode = isDarkPreferred;
+    }
+
+    setDarkMode(initialDarkMode);
+    if (initialDarkMode) {
+      document.documentElement.classList.add('dark');
+    } else {
+       document.documentElement.classList.remove('dark');
+    }
+   }, []); 
 
   const toggleDarkMode = () => {
-    const newMode = !darkMode;
-    setDarkMode(newMode);
-    localStorage.setItem('darkMode', String(newMode));
-    document.documentElement.classList.toggle('dark', newMode);
+    setDarkMode(prevMode => {
+        const newMode = !prevMode;
+        if (newMode) {
+            document.documentElement.classList.add('dark');
+            localStorage.setItem('darkMode', 'true');
+        } else {
+            document.documentElement.classList.remove('dark');
+            localStorage.setItem('darkMode', 'false');
+        }
+        return newMode;
+    });
   };
 
   return (
     <header
       className={cn(
-        'fixed top-0 left-0 w-full z-50 transition-all duration-300 ease-in-out',
+        'fixed top-0 left-0 w-full z-50 transition-all duration-500 ease-in-out',
         scrolled
           ? 'bg-white/90 dark:bg-gray-900/90 backdrop-blur-lg shadow-sm border-b border-gray-100 dark:border-gray-800 py-3'
           : 'bg-white/80 dark:bg-gray-900/80 backdrop-blur-md py-4'
@@ -113,16 +129,16 @@ const Navbar = () => {
           <span className="bg-gradient-to-br from-indigo-500 to-purple-600 dark:from-indigo-600 dark:to-purple-700 text-white p-1.5 rounded-md shadow-sm">
             <Package size={20} strokeWidth={2.5} />
           </span>
-          <span>MyPortfolio</span>
+          <span className="">MyPortfolio</span> 
         </motion.a>
 
-        <nav className="hidden md:flex items-center gap-1">
+        <nav className="hidden md:flex items-center space-x-1">
           {navLinks.map((link, index) => (
             <motion.a
               key={link.label}
               href={link.href}
               className={cn(
-                "px-3 py-2 rounded-lg text-sm font-medium transition-all duration-300 relative group",
+                "px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 relative group",
                 activeSection === link.href.substring(1)
                   ? "text-indigo-600 dark:text-indigo-400 font-semibold"
                   : "text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100/60 dark:hover:bg-gray-800/60"
@@ -146,38 +162,37 @@ const Navbar = () => {
             </motion.a>
           ))}
 
-          <div className="flex items-center gap-2 ml-2">
-            <motion.button
-              onClick={toggleDarkMode}
-              className="p-2 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-              aria-label="Toggle dark mode"
-              initial="hidden"
-              animate="visible"
-              variants={navItemVariants}
-              transition={{ duration: 0.3, delay: 0.1 * (navLinks.length + 1) }}
-            >
-              {darkMode ? <Sun size={18} /> : <Moon size={18} />}
-            </motion.button>
+          <motion.button
+            onClick={toggleDarkMode}
+            className="ml-2 p-2 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            aria-label="Toggle dark mode"
+            initial="hidden"
+            animate="visible"
+            variants={navItemVariants}
+            transition={{ duration: 0.3, delay: 0.1 * (navLinks.length + 1) }}
+          >
+            {darkMode ? <Sun size={18} /> : <Moon size={18} />}
+          </motion.button>
 
-            <motion.a
-              href="/resume.pdf" 
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-4 py-2 bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-700 dark:to-purple-700 text-white text-sm font-medium rounded-lg hover:from-indigo-700 hover:to-purple-700 transition-all duration-300 shadow-md hover:shadow-lg flex items-center gap-2"
-              initial="hidden"
-              animate="visible"
-              variants={navItemVariants}
-              transition={{ duration: 0.3, delay: 0.1 * (navLinks.length + 2) }}
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 0.97 }}
-              title="Download my Resume"
-            >
-              <FileText size={16} />
-              <span>Resume</span>
-            </motion.a>
-          </div>
+          <motion.a
+            href="/resume.pdf" 
+            target="_blank"
+            rel="noopener noreferrer"
+            className="ml-2 px-4 py-2 bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-700 dark:to-purple-700 text-white text-sm font-medium rounded-lg hover:from-indigo-700 hover:to-purple-700 transition-all duration-300 shadow-md hover:shadow-lg flex items-center gap-2 transform hover:-translate-y-0.5"
+            initial="hidden"
+            animate="visible"
+            variants={navItemVariants}
+            transition={{ duration: 0.3, delay: 0.1 * (navLinks.length + 2) }}
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.97 }}
+            title="Download my Resume"
+          >
+            <FileText size={16} />
+            <span className="hidden lg:inline">Resume</span> 
+             <span className="lg:hidden">CV</span> 
+          </motion.a>
         </nav>
 
         <div className="flex items-center gap-2 md:hidden">
@@ -194,8 +209,8 @@ const Navbar = () => {
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label="Toggle menu"
             aria-expanded={isMenuOpen}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
           >
             <AnimatePresence initial={false} mode="wait">
               <motion.div
@@ -207,7 +222,7 @@ const Navbar = () => {
               >
                 {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
               </motion.div>
-            </AnimatePresence>
+             </AnimatePresence>
           </motion.button>
         </div>
       </div>
@@ -215,7 +230,7 @@ const Navbar = () => {
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div
-            className="md:hidden fixed inset-0 top-0 z-40 pt-16 flex flex-col"
+            className="md:hidden fixed inset-0 top-0 z-40 pt-[72px] flex flex-col h-screen"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
@@ -225,9 +240,9 @@ const Navbar = () => {
               className="absolute inset-0 bg-black/30 backdrop-blur-sm"
               onClick={() => setIsMenuOpen(false)}
               aria-hidden="true"
-            />
+            ></div>
 
-            <nav className="relative bg-white dark:bg-gray-900 w-full shadow-xl rounded-b-lg overflow-y-auto border-b border-gray-200 dark:border-gray-800 max-h-[calc(100vh-4rem)]">
+            <nav className="relative bg-white dark:bg-gray-900 w-full shadow-xl rounded-b-lg overflow-y-auto border-b border-gray-200 dark:border-gray-800">
               {navLinks.map((link, index) => (
                 <motion.a
                   key={link.label}
@@ -261,7 +276,7 @@ const Navbar = () => {
                 href="/resume.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block w-full py-4 px-6 bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-700 dark:to-purple-700 text-white text-base font-medium hover:from-indigo-700 hover:to-purple-700 text-center transition-all duration-300 flex items-center justify-center gap-2"
+                className="block w-full py-4 px-6 bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-700 dark:to-purple-700 text-white text-base font-medium hover:from-indigo-700 hover:to-purple-700 text-center transition-all duration-300 flex items-center justify-center gap-2 mt-auto" // Pushed slightly apart
                 variants={mobileNavItemVariants}
                 initial="hidden"
                 animate="visible"
@@ -274,6 +289,7 @@ const Navbar = () => {
                 Download Resume
               </motion.a>
             </nav>
+            <div className="flex-grow relative" onClick={() => setIsMenuOpen(false)} aria-hidden="true"></div>
           </motion.div>
         )}
       </AnimatePresence>
