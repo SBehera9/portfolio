@@ -45,7 +45,7 @@ const skillsData = [
   },
   {
     category: 'UI/UX Design',
-    items: ['Figma', 'Responsive Design', 'Wireframing', 'Prototyping', 'Accessibility'],
+    items: ['Responsive Design', 'Prototyping', 'Accessibility'],
     icon: <Palette size={20} />,
     color: 'bg-pink-100 dark:bg-pink-900/30',
     borderColor: 'border-pink-200 dark:border-pink-800/50',
@@ -53,7 +53,7 @@ const skillsData = [
   },
   {
     category: 'Tools & Platforms',
-    items: ['Git', 'GitHub', 'VS Code', 'Vercel', 'NPM/Yarn', 'Jira'],
+    items: ['Git', 'GitHub', 'VS Code', 'Vercel', 'NPM/Yarn'],
     icon: <Cpu size={20} />,
     color: 'bg-blue-100 dark:bg-blue-900/30',
     borderColor: 'border-blue-200 dark:border-blue-800/50',
@@ -61,7 +61,7 @@ const skillsData = [
   },
   {
     category: 'Soft Skills',
-    items: ['Collaboration', 'Problem-Solving', 'Agile Methodologies', 'Communication', 'Mentorship'],
+    items: ['Collaboration', 'Problem-Solving', 'Communication', 'Mentorship'],
     icon: <Users size={20} />,
     color: 'bg-teal-100 dark:bg-teal-900/30',
     borderColor: 'border-teal-200 dark:border-teal-800/50',
@@ -118,7 +118,7 @@ const About = () => {
 
             <div className="space-y-6 text-lg text-slate-600 dark:text-slate-300 leading-relaxed"> 
               <p>
-                Hello! I'm a passionate <strong className="font-semibold text-slate-800 dark:text-slate-100">Frontend Developer</strong> with expertise in <strong className="font-semibold text-slate-800 dark:text-slate-100">UI/UX Design</strong>. With over <span className="font-bold text-indigo-600 dark:text-indigo-400">2+ years</span> of professional experience, I specialize in building responsive, accessible web applications using modern JavaScript frameworks.
+                Hello! I'm a passionate <strong className="font-semibold text-slate-800 dark:text-slate-100">Frontend Developer</strong> with expertise in <strong className="font-semibold text-slate-800 dark:text-slate-100">UI/UX Design</strong>. With over <span className="font-bold text-indigo-600 dark:text-indigo-400">2+ years</span> of professional experience, I specialize in building responsive, accessible web applications using modern frameworks.
               </p>
 
               <div className="p-4 bg-slate-50 dark:bg-slate-700/30 rounded-lg border border-slate-200/70 dark:border-slate-600/50"> 
@@ -203,19 +203,19 @@ const About = () => {
                   <div className="flex items-start gap-3">
                     <GitBranch className="flex-shrink-0 text-indigo-200 dark:text-indigo-300 mt-1" size={16} /> 
                     <p className="text-indigo-100 dark:text-indigo-200">
-                      Contributed to <strong className="font-bold text-white">10+ open-source</strong> projects
+                      Contributed to <strong className="font-bold text-white">7+ open-source</strong> projects
                     </p>
                   </div>
                   <div className="flex items-start gap-3">
                     <Code className="flex-shrink-0 text-indigo-200 dark:text-indigo-300 mt-1" size={16} />
                     <p className="text-indigo-100 dark:text-indigo-200">
-                      Launched <strong className="font-bold text-white">20+ web applications</strong> in production
+                      Launched <strong className="font-bold text-white">10+ web applications</strong> in production
                     </p>
                   </div>
                   <div className="flex items-start gap-3">
                     <Users className="flex-shrink-0 text-indigo-200 dark:text-indigo-300 mt-1" size={16} />
                     <p className="text-indigo-100 dark:text-indigo-200">
-                      Mentored <strong className="font-bold text-white">5+ junior developers</strong>
+                      Mentored <strong className="font-bold text-white">3+ junior developers</strong>
                     </p>
                   </div>
                 </div>

@@ -6,16 +6,16 @@ import { cn } from '@/lib/utils';
 const experienceData = [
   {
     id: 1,
-    title: 'Software Engineer',
+    title: 'Software Engineer Intern',
     company: 'Nexus InfoTech',
-    location: 'Berhampur',
+    location: 'Berhampur, Odisha',
     period: 'Jun 2023 - Present',
     responsibilities: [
-      'Developed responsive and interactive UIs using React.js, Next.js, and Tailwind CSS',
+      'Developed responsive and interactive UI using React.js, Next.js and Tailwind CSS',
       'Created reusable components and dynamic pages for e-commerce platforms',
       'Enhanced website performance and user experience, increasing engagement by 30%', 
       'Worked closely with designers to convert Figma mockups into live pages',
-      'Implemented CI/CD pipelines reducing deployment time by 40%'
+      'Implemented Continuous Integration/Continuous Delivery/Deployment pipelines reducing deployment time by 40%'
     ],
     icon: <Code className="text-indigo-500 dark:text-indigo-400" size={20} />
   }
@@ -26,8 +26,16 @@ const educationData = [
     id: 1,
     degree: "Bachelor's in Computer Science Engineering",
     institution: 'Konark Institute of Science and Technology',
-    location: 'Bhubaneswar',
+    location: 'Bhubaneswar, Odisha',
     period: 'Oct 2021 - Aug 2024',
+    icon: <GraduationCap className="text-purple-500 dark:text-purple-400" size={20} />
+  },
+  {
+    id: 2,
+    degree: "Diploma in Mechatronics",
+    institution: 'NTTF (J N Tata Technical Education Center)',
+    location: 'Gopalpur Odisha',
+    period: 'Aug 2017 - Jun 2020',
     icon: <GraduationCap className="text-purple-500 dark:text-purple-400" size={20} />
   }
 ];
@@ -36,7 +44,7 @@ const certificationData = [
   {
     id: 1,
     name: 'Full Stack Web Development',
-    institution: 'Edureka Learning Center',
+    institution: 'Edureka Learning Center, Brahmapur',
     period: '2023',
     icon: <Award className="text-teal-500 dark:text-teal-400" size={20} />
   },

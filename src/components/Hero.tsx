@@ -108,6 +108,7 @@ const Hero = () => {
               <Code className="text-indigo-500 dark:text-indigo-400" size={22} />
               Frontend Developer
               <span className="text-slate-400 dark:text-slate-500 mx-1 md:mx-2">|</span>
+              FullStack Developer
               <Palette className="text-purple-500 dark:text-purple-400" size={22} />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-400 dark:to-purple-500 font-semibold">
                 UI Designer
