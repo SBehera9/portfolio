@@ -120,7 +120,7 @@ const Navbar = () => {
           <span className="bg-gradient-to-br from-indigo-500 to-purple-600 dark:from-indigo-600 dark:to-purple-700 text-white p-2 rounded-lg shadow-sm">
             <Code size={20} strokeWidth={2.5} />
           </span>
-          <span className="font-medium hidden sm:inline">Portfolio</span>
+          <span className="font-medium  sm:inline">Portfolio</span>
         </motion.a>
 
         <nav className="hidden md:flex items-center space-x-1">
