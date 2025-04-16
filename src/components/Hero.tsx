@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, Github, Linkedin, Mail, Send, Briefcase, Code, Palette } from 'lucide-react';
+import { ArrowRight, Github, Linkedin, Mail, Send, Briefcase, Code, Palette, Cpu, Database, GitBranch } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils'; 
 
@@ -60,29 +60,31 @@ const Hero = () => {
   ];
 
   const skills = [
-    { name: "HTML", color: "bg-blue-500" },
-    { name: "CSS", color: "bg-pink-500" },
-    { name: "Tailwind CSS", color: "bg-red-500" },
-    { name: "Bootstrap", color: "bg-yellow-500" },
-    { name: "JavaScript", color: "bg-cyan-500" },
-    { name: "React", color: "bg-purple-500" },
-    { name: "Next JS", color: "bg-green-500" },
-    { name: "TypeScript", color: "bg-violet-600" },
-    { name: "Node JS", color: "bg-fuchsia-500" },
+    { name: "HTML", icon: <Code size={14} />, color: "bg-orange-500" },
+    { name: "CSS", icon: <Palette size={14} />, color: "bg-blue-500" },
+    { name: "Tailwind", icon: <span className="text-xs">TW</span>, color: "bg-cyan-500" },
+    { name: "JavaScript", icon: <span className="text-xs">JS</span>, color: "bg-yellow-500" },
+    { name: "React", icon: <span className="text-xs">R</span>, color: "bg-sky-500" },
+    { name: "Next.js", icon: <span className="text-xs">N</span>, color: "bg-gray-700" },
+    { name: "TypeScript", icon: <span className="text-xs">TS</span>, color: "bg-blue-600" },
+    { name: "Node.js", icon: <span className="text-xs">N</span>, color: "bg-green-500" },
+    { name: "MongoDB", icon: <Database size={14} />, color: "bg-emerald-500" },
+    { name: "Git", icon: <GitBranch size={14} />, color: "bg-red-500" },
   ];
-
- 
 
   return (
     <section
       id="home"
-      className="min-h-screen flex items-center bg- justify-center bg-gradient-to-br from-white to-slate-50 dark:from-gray-900 dark:to-slate-800 py-24 md:py-32 px-4 sm:px-6 lg:px-8 overflow-hidden relative" 
+      className="min-h-screen flex items-center justify-center bg-gradient-to-br from-white via-slate-50 to-slate-100 dark:from-gray-900 dark:via-slate-800 dark:to-slate-900 py-24 md:py-32 px-4 sm:px-6 lg:px-8 overflow-hidden relative" 
     >
+      {/* Background elements */}
       <div className="absolute top-20 left-10 w-32 h-32 rounded-full bg-indigo-100/50 dark:bg-indigo-900/30 blur-3xl -z-10"></div>
       <div className="absolute bottom-20 right-10 w-40 h-40 rounded-full bg-purple-100/50 dark:bg-purple-900/30 blur-3xl -z-10"></div>
+      <div className="absolute top-1/2 left-1/4 w-24 h-24 rounded-full bg-blue-100/40 dark:bg-blue-900/20 blur-2xl -z-10"></div>
 
       <div className="container mx-auto max-w-7xl">
         <div className="grid md:grid-cols-2 gap-16 lg:gap-24 items-center">
+          {/* Text content */}
           <motion.div
             className="order-2 md:order-1 text-center md:text-left"
             variants={containerVariants}
@@ -98,31 +100,30 @@ const Hero = () => {
             </motion.p>
 
             <motion.h1
-              className="text-5xl lg:text-6xl font-extrabold text-slate-900 dark:text-slate-100 mb-4 leading-tight"
+              className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 dark:text-slate-100 mb-4 leading-tight"
               variants={itemVariants}
             >
               Sudarshan <span className="text-indigo-600 dark:text-indigo-400">Behera</span>
             </motion.h1>
 
             <motion.h2
-              className="text-2xl text-slate-700 dark:text-slate-300 mb-6 font-medium flex items-center gap-2 justify-center md:justify-start flex-wrap" 
+              className="text-xl sm:text-2xl text-slate-700 dark:text-slate-300 mb-6 font-medium flex items-center gap-2 justify-center md:justify-start flex-wrap" 
               variants={itemVariants}
             >
               <Code className="text-indigo-500 dark:text-indigo-400" size={22} />
-              Frontend Developer
-              <span className="text-slate-400 dark:text-slate-500 mx-1 md:mx-2">|</span>
-              FullStack Developer
-              <Palette className="text-purple-500 dark:text-purple-400" size={22} />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-400 dark:to-purple-500 font-semibold">
-                UI Designer
+              <span className="bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-400 dark:to-purple-400 bg-clip-text text-transparent">
+                FullStack Developer
               </span>
+              <span className="text-slate-400 dark:text-slate-500 mx-1 md:mx-2">|</span>
+              <Palette className="text-purple-500 dark:text-purple-400" size={22} />
+              <span>UI/UX Designer</span>
             </motion.h2>
 
             <motion.p
               className="text-slate-600 dark:text-slate-400 text-lg mb-10 max-w-lg mx-auto md:mx-0 leading-relaxed"
               variants={itemVariants}
             >
-              Crafting intuitive and engaging digital experiences with a focus on clean code, modern design principles, and user satisfaction.
+              I build exceptional digital experiences with modern web technologies, focusing on performance, accessibility, and beautiful interfaces.
             </motion.p>
 
             <motion.div
@@ -131,7 +132,7 @@ const Hero = () => {
             >
               <motion.a
                 href="#projects"
-                className="px-7 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold rounded-lg shadow-md hover:shadow-lg hover:from-indigo-700 hover:to-purple-700 dark:hover:from-indigo-500 dark:hover:to-purple-500 transition-all duration-300 flex items-center justify-center gap-2 transform hover:-translate-y-1 group"
+                className="px-6 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold rounded-lg shadow-md hover:shadow-lg hover:from-indigo-700 hover:to-purple-700 dark:hover:from-indigo-500 dark:hover:to-purple-500 transition-all duration-300 flex items-center justify-center gap-2 transform hover:-translate-y-1 group"
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.97 }}
               >
@@ -142,7 +143,7 @@ const Hero = () => {
 
               <motion.a
                 href="#contact"
-                className="px-7 py-3 border-2 border-indigo-600 text-indigo-700 dark:border-indigo-500 dark:text-indigo-400 hover:bg-indigo-50/50 dark:hover:bg-indigo-900/20 font-semibold rounded-lg transition-all duration-300 flex items-center justify-center gap-2 transform hover:-translate-y-1 group"
+                className="px-6 py-3 border-2 border-indigo-600 text-indigo-700 dark:border-indigo-500 dark:text-indigo-400 hover:bg-indigo-50/50 dark:hover:bg-indigo-900/20 font-semibold rounded-lg transition-all duration-300 flex items-center justify-center gap-2 transform hover:-translate-y-1 group"
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.97 }}
               >
@@ -160,10 +161,12 @@ const Hero = () => {
                     key={index}
                     className={cn(
                       skill.color,
-                      'text-white text-xs font-medium px-3 py-1.5 rounded-full shadow-sm'
-                     )}
+                      'text-white flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-full shadow-sm'
+                    )}
                     whileHover={{ y: -2 }}
+                    title={skill.name}
                   >
+                    {skill.icon}
                     {skill.name}
                   </motion.span>
                 ))}
@@ -193,6 +196,7 @@ const Hero = () => {
             </motion.div>
           </motion.div>
 
+          {/* Image content */}
           <motion.div
             className="order-1 md:order-2 flex justify-center items-center relative mt-10 md:mt-0" 
             variants={imageVariants}
@@ -200,17 +204,20 @@ const Hero = () => {
             animate="visible"
           >
             <div className="relative w-72 h-72 md:w-80 md:h-80 lg:w-96 lg:h-96">
+              {/* Decorative backgrounds */}
               <div className="absolute inset-0 bg-gradient-to-br from-indigo-100 via-purple-50 to-slate-50 dark:from-indigo-900/40 dark:via-purple-900/20 dark:to-slate-800/30 rounded-3xl transform rotate-[-8deg] scale-105 opacity-70 dark:opacity-50 blur-sm"></div>
               <div className="absolute inset-0 bg-gradient-to-tl from-purple-100 via-indigo-50 to-slate-50 dark:from-purple-900/40 dark:via-indigo-900/20 dark:to-slate-800/30 rounded-3xl transform rotate-[6deg] scale-100 opacity-60 dark:opacity-40 blur-sm"></div>
 
+              {/* Profile image */}
               <img
                 src="/SB.jpg"
-                alt="Sudarshan Behera - Frontend Developer & UI Designer"
+                alt="Sudarshan Behera - FullStack Developer & UI Designer"
                 width={384}
                 height={384}
                 className="relative w-full h-full object-cover rounded-full shadow-xl border-4 border-white dark:border-slate-700" 
               />
 
+              {/* Floating badges */}
               <motion.div
                 className="absolute -bottom-4 -right-4 bg-white dark:bg-slate-800 shadow-lg rounded-full p-3 border border-slate-200 dark:border-slate-700"
                 variants={floatingElementVariants}
@@ -234,15 +241,26 @@ const Hero = () => {
               </motion.div>
 
               <motion.div
-                 className="absolute top-1/2 -left-8 bg-white dark:bg-slate-800 shadow-lg rounded-full p-2 border border-slate-200 dark:border-slate-700 hidden sm:block" 
-                 variants={floatingElementVariants}
-                 animate="floating"
-                 transition={{ duration: 4, delay: 0.8 }} 
-               >
-                 <div className="w-8 h-8 bg-gradient-to-br from-yellow-500 to-orange-500 rounded-full flex items-center justify-center text-white text-xs font-bold">
-                   JS
-                 </div>
-               </motion.div>
+                className="absolute top-1/2 -left-8 bg-white dark:bg-slate-800 shadow-lg rounded-full p-2 border border-slate-200 dark:border-slate-700 hidden sm:block" 
+                variants={floatingElementVariants}
+                animate="floating"
+                transition={{ duration: 4, delay: 0.8 }} 
+              >
+                <div className="w-8 h-8 bg-gradient-to-br from-yellow-500 to-orange-500 rounded-full flex items-center justify-center text-white text-xs font-bold">
+                  JS
+                </div>
+              </motion.div>
+
+              <motion.div
+                className="absolute top-1/4 -right-6 bg-white dark:bg-slate-800 shadow-lg rounded-full p-2 border border-slate-200 dark:border-slate-700 hidden sm:block"
+                variants={floatingElementVariants}
+                animate="floating"
+                transition={{ duration: 3.8, delay: 0.3 }}
+              >
+                <div className="w-8 h-8 bg-gradient-to-br from-green-500 to-emerald-500 rounded-full flex items-center justify-center text-white">
+                  <Cpu size={16} />
+                </div>
+              </motion.div>
             </div>
           </motion.div>
         </div>
