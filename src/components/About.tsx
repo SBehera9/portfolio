@@ -227,15 +227,10 @@ const About = () => {
                   <div className="flex items-start gap-3">
                     <Users className="flex-shrink-0 text-indigo-200 dark:text-indigo-300 mt-1" size={16} />
                     <p className="text-indigo-100 dark:text-indigo-200">
-                      Mentored <strong className="font-bold text-white">3+ junior developers</strong>
+                      Mentored <strong className="font-bold text-white">2 junior developers</strong>
                     </p>
                   </div>
-                  <div className="flex items-start gap-3">
-                    <Globe className="flex-shrink-0 text-indigo-200 dark:text-indigo-300 mt-1" size={16} />
-                    <p className="text-indigo-100 dark:text-indigo-200">
-                      Worked with <strong className="font-bold text-white">5+ international</strong> clients
-                    </p>
-                  </div>
+                  
                 </div>
               </div>
             </motion.div>
