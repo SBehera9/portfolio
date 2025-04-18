@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { Send, Mail, Phone, MapPin, CheckCircle, Loader2, MessageSquareQuote } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { cn } from '@/lib/utils';
+import { cn } from '@/lib/utils'; 
 
 const useToast = () => {
   const toast = ({ title, description, variant }: { title: string; description: string; variant?: 'default' | 'destructive' }) => {
     console.log(`Toast (${variant || 'default'}): ${title} - ${description}`);
-    alert(`${title}\n${description}`); 
+    alert(`${title}\n${description}`);
   };
   return { toast };
 };
@@ -17,30 +17,30 @@ const sectionVariants = {
     opacity: 1,
     transition: {
       duration: 0.5,
-      staggerChildren: 0.15,
+      staggerChildren: 0.1, 
     },
   },
 };
 
 const itemVariants = {
-  hidden: { opacity: 0, y: 30 },
+  hidden: { opacity: 0, y: 20 }, 
   visible: {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.6,
+      duration: 0.5, 
       ease: "easeOut",
     },
   },
 };
 
 const formItemVariants = {
-  hidden: { opacity: 0, x: -15 },
+  hidden: { opacity: 0, x: -10 }, 
   visible: {
       opacity: 1,
       x: 0,
       transition: {
-          duration: 0.4,
+          duration: 0.35, 
           ease: "easeOut"
       }
   }
@@ -94,8 +94,8 @@ const Contact = () => {
 
     setIsSubmitting(false);
     setIsSubmitted(true);
-    setFormState({ name: '', email: '', subject: '', message: '' }); 
-    toast({ 
+    setFormState({ name: '', email: '', subject: '', message: '' });
+    toast({
         title: "Message Sent!",
         description: "Thank you for reaching out. I'll be in touch soon.",
     });
@@ -108,65 +108,65 @@ const Contact = () => {
   return (
     <section
         id="contact"
-        className="py-16 sm:py-20 md:py-24 lg:py-32 bg-slate-50 dark:bg-gray-900 overflow-hidden relative" 
+        className="py-16 sm:py-20 md:py-24 lg:py-32 bg-slate-50 dark:bg-gray-900 overflow-hidden relative"
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
 
         <motion.div
-          className="text-center mb-12 sm:mb-16 md:mb-20"
+          className="text-center mb-12 md:mb-16 lg:mb-20"
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.5 }}
+          viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.5 }}
         >
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 dark:text-slate-100 mb-4 flex items-center justify-center gap-3">
-             <MessageSquareQuote size={32} className="text-indigo-600 dark:text-indigo-400 hidden sm:block" /> 
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold sm:font-extrabold text-slate-900 dark:text-slate-100 mb-3 sm:mb-4 flex items-center justify-center gap-2 sm:gap-3">
+             <MessageSquareQuote size={28} className="text-indigo-600 dark:text-indigo-400 sm:w-8 sm:h-8" />
              Get In Touch
           </h2>
-          <div className="w-20 h-1.5 bg-gradient-to-r from-indigo-500 to-purple-500 dark:from-indigo-400 dark:to-purple-400 mx-auto rounded-full" />
+          <div className="w-16 sm:w-20 h-1 sm:h-1.5 bg-gradient-to-r from-indigo-500 to-purple-500 dark:from-indigo-400 dark:to-purple-400 mx-auto rounded-full" />
         </motion.div>
 
         <motion.div
-            className="grid lg:grid-cols-12 gap-8 sm:gap-10 lg:gap-16 items-start"
+            className="grid lg:grid-cols-12 gap-8 md:gap-12 lg:gap-16 items-start"
             variants={sectionVariants}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.1 }}
         >
-          <motion.div className="lg:col-span-5 space-y-6 sm:space-y-8" variants={itemVariants}>
-            <p className="text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
+          <motion.div className="lg:col-span-5 space-y-5 sm:space-y-6" variants={itemVariants}>
+            <p className="text-base text-slate-600 dark:text-slate-300 leading-relaxed">
               I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision. Feel free to reach out using the form or contact details below.
             </p>
 
-            <div className="space-y-4 sm:space-y-6">
+            <div className="space-y-4 sm:space-y-5">
               {contactDetails.map((item) => {
-                const colors = colorClasses[item.color as keyof typeof colorClasses] || colorClasses.indigo; 
+                const colors = colorClasses[item.color as keyof typeof colorClasses] || colorClasses.indigo;
                 return (
                   <motion.div
                     key={item.title}
                     className={cn(
-                        "flex items-start p-4 sm:p-5 rounded-xl shadow-md border transition-shadow hover:shadow-lg",
-                        "bg-white dark:bg-slate-800/50 border-slate-100 dark:border-slate-700/50" 
+                        "flex items-start p-4 rounded-lg sm:rounded-xl shadow-sm sm:shadow-md border transition-shadow hover:shadow-lg",
+                        "bg-white dark:bg-slate-800/50 border-slate-100 dark:border-slate-700/50"
                     )}
-                    whileHover={{ y: -4 }}
+                    whileHover={{ y: -3 }} 
                   >
                     <div className={cn(
-                        "flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-lg mr-3 sm:mr-4 flex items-center justify-center",
-                        colors.bg 
+                        "flex-shrink-0 w-10 h-10 rounded-md sm:rounded-lg mr-3 flex items-center justify-center",
+                        colors.bg
                     )}>
-                      <item.icon size={20} className={colors.text} /> 
+                      <item.icon size={18} className={cn(colors.text, "sm:w-5 sm:h-5")} />
                     </div>
-                    <div>
-                      <h3 className="text-base sm:text-lg font-semibold text-slate-800 dark:text-slate-100 mb-0.5">{item.title}</h3>
+                    <div className="flex-1 min-w-0"> 
+                      <h3 className="text-base font-semibold text-slate-800 dark:text-slate-100 mb-0.5">{item.title}</h3>
                       {item.href ? (
                          <a href={item.href} className={cn(
-                             "text-sm sm:text-base text-slate-600 dark:text-slate-300 transition-colors duration-200 break-words",
-                             colors.hoverText 
+                             "text-sm text-slate-600 dark:text-slate-300 transition-colors duration-200 break-words", 
+                             colors.hoverText
                          )}>
                           {item.value}
                         </a>
                       ) : (
-                        <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 break-words">{item.value}</p>
+                        <p className="text-sm text-slate-600 dark:text-slate-300 break-words">{item.value}</p> 
                       )}
                     </div>
                   </motion.div>
@@ -175,46 +175,47 @@ const Contact = () => {
             </div>
           </motion.div>
 
+          {/* Contact Form Column */}
           <motion.div className="lg:col-span-7" variants={itemVariants}>
             <div className={cn(
-                "p-6 sm:p-8 md:p-10 rounded-xl sm:rounded-2xl shadow-xl border",
-                "bg-white dark:bg-slate-800/50 border-slate-100 dark:border-slate-700/50" 
+                "p-5 sm:p-8 md:p-10 rounded-xl sm:rounded-2xl shadow-lg dark:shadow-xl border",
+                "bg-white dark:bg-slate-800/50 border-slate-100 dark:border-slate-700/50"
              )}>
-               <AnimatePresence mode="wait"> 
+               <AnimatePresence mode="wait">
                 {isSubmitted ? (
                   <motion.div
                     key="success"
-                    initial={{ opacity: 0, scale: 0.9 }}
+                    initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.9 }}
+                    exit={{ opacity: 0, scale: 0.95 }}
                     transition={{ duration: 0.3 }}
-                    className="flex flex-col items-center justify-center text-center py-8 sm:py-10"
-                    aria-live="polite" 
+                    className="flex flex-col items-center justify-center text-center py-6 sm:py-8"
+                    aria-live="polite"
                   >
                     <motion.div
                         initial={{ scale: 0 }}
                         animate={{ scale: 1 }}
                         transition={{ type: "spring", stiffness: 200, damping: 15, delay: 0.1 }}
                     >
-                        <CheckCircle size={48} className="text-green-500 dark:text-green-400 mb-4 sm:mb-5" /> 
+                        <CheckCircle size={40} className="text-green-500 dark:text-green-400 mb-3 sm:mb-4 sm:w-12 sm:h-12" />
                     </motion.div>
-                    <h3 className="text-xl sm:text-2xl font-semibold text-slate-800 dark:text-slate-100 mb-2 sm:mb-3">Message Sent Successfully!</h3>
-                    <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 max-w-sm"> 
-                      Thank you for getting in touch. I appreciate your message and will respond as soon as possible.
+                    <h3 className="text-lg sm:text-xl md:text-2xl font-semibold text-slate-800 dark:text-slate-100 mb-2">Message Sent Successfully!</h3>
+                    <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 max-w-xs sm:max-w-sm">
+                      Thank you for getting in touch. I'll respond as soon as possible.
                     </p>
                   </motion.div>
                 ) : (
                   <motion.form
                       key="form"
                       onSubmit={handleSubmit}
-                      className="space-y-4 sm:space-y-6"
-                      variants={{ visible: { transition: { staggerChildren: 0.08 } } }} 
+                      className="space-y-4 sm:space-y-5" 
+                      variants={{ visible: { transition: { staggerChildren: 0.06 } } }} 
                       initial="hidden"
                       animate="visible"
-                      exit={{ opacity: 0 }} 
+                      exit={{ opacity: 0 }}
                   >
                     <motion.div variants={formItemVariants}>
-                      <label htmlFor="name" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5"> 
+                      <label htmlFor="name" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">
                         Full Name
                       </label>
                       <input
@@ -227,7 +228,7 @@ const Contact = () => {
                         autoComplete="name"
                         placeholder="e.g., John Doe"
                         className={cn(
-                            "w-full px-4 py-2.5 text-sm sm:text-base border rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-1 dark:focus:ring-offset-slate-800 transition duration-200 ease-in-out",
+                            "w-full px-3.5 py-2 sm:px-4 sm:py-2.5 text-sm border rounded-md sm:rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-1 dark:focus:ring-offset-slate-800 transition duration-200 ease-in-out",
                             "border-slate-300 dark:border-slate-600 focus:ring-indigo-500/50 focus:border-indigo-500 dark:focus:border-indigo-400",
                             "bg-slate-50/50 dark:bg-slate-700/30 text-slate-900 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500"
                          )}
@@ -235,7 +236,7 @@ const Contact = () => {
                     </motion.div>
 
                     <motion.div variants={formItemVariants}>
-                      <label htmlFor="email" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5">
+                      <label htmlFor="email" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">
                         Email Address
                       </label>
                       <input
@@ -248,7 +249,7 @@ const Contact = () => {
                         autoComplete="email"
                         placeholder="e.g., john.doe@example.com"
                         className={cn(
-                            "w-full px-4 py-2.5 text-sm sm:text-base border rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-1 dark:focus:ring-offset-slate-800 transition duration-200 ease-in-out",
+                            "w-full px-3.5 py-2 sm:px-4 sm:py-2.5 text-sm border rounded-md sm:rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-1 dark:focus:ring-offset-slate-800 transition duration-200 ease-in-out",
                             "border-slate-300 dark:border-slate-600 focus:ring-indigo-500/50 focus:border-indigo-500 dark:focus:border-indigo-400",
                             "bg-slate-50/50 dark:bg-slate-700/30 text-slate-900 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500"
                          )}
@@ -256,7 +257,7 @@ const Contact = () => {
                     </motion.div>
 
                     <motion.div variants={formItemVariants}>
-                      <label htmlFor="subject" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5">
+                      <label htmlFor="subject" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">
                         Subject
                       </label>
                       <input
@@ -268,7 +269,7 @@ const Contact = () => {
                         required
                         placeholder="e.g., Project Inquiry"
                         className={cn(
-                            "w-full px-4 py-2.5 text-sm sm:text-base border rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-1 dark:focus:ring-offset-slate-800 transition duration-200 ease-in-out",
+                            "w-full px-3.5 py-2 sm:px-4 sm:py-2.5 text-sm border rounded-md sm:rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-1 dark:focus:ring-offset-slate-800 transition duration-200 ease-in-out",
                             "border-slate-300 dark:border-slate-600 focus:ring-indigo-500/50 focus:border-indigo-500 dark:focus:border-indigo-400",
                             "bg-slate-50/50 dark:bg-slate-700/30 text-slate-900 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500"
                          )}
@@ -276,7 +277,7 @@ const Contact = () => {
                     </motion.div>
 
                     <motion.div variants={formItemVariants}>
-                      <label htmlFor="message" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5">
+                      <label htmlFor="message" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">
                         Your Message
                       </label>
                       <textarea
@@ -288,7 +289,7 @@ const Contact = () => {
                         required
                         placeholder="Tell me about your project or inquiry..."
                          className={cn(
-                            "w-full px-4 py-2.5 text-sm sm:text-base border rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-1 dark:focus:ring-offset-slate-800 transition duration-200 ease-in-out resize-y min-h-[120px]",
+                            "w-full px-3.5 py-2 sm:px-4 sm:py-2.5 text-sm border rounded-md sm:rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-1 dark:focus:ring-offset-slate-800 transition duration-200 ease-in-out resize-y min-h-[100px] sm:min-h-[120px]", 
                             "border-slate-300 dark:border-slate-600 focus:ring-indigo-500/50 focus:border-indigo-500 dark:focus:border-indigo-400",
                             "bg-slate-50/50 dark:bg-slate-700/30 text-slate-900 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500"
                          )}
@@ -300,7 +301,7 @@ const Contact = () => {
                         type="submit"
                         disabled={isSubmitting}
                         className={cn(
-                          "w-full px-5 py-2.5 sm:px-7 sm:py-3 text-sm sm:text-base font-semibold rounded-lg shadow-md transition-all duration-300 flex items-center justify-center gap-2 focus:outline-none focus:ring-2 focus:ring-offset-2 dark:focus:ring-offset-slate-800 focus:ring-indigo-500 dark:focus:ring-indigo-400",
+                          "w-full px-5 py-2.5 text-sm font-semibold rounded-lg shadow-md transition-all duration-300 flex items-center justify-center gap-2 focus:outline-none focus:ring-2 focus:ring-offset-2 dark:focus:ring-offset-slate-800 focus:ring-indigo-500 dark:focus:ring-indigo-400",
                           isSubmitting
                             ? "bg-slate-400 dark:bg-slate-600 text-slate-600 dark:text-slate-400 cursor-not-allowed"
                             : "bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-700 dark:to-purple-700 text-white transform hover:-translate-y-1 hover:shadow-lg"
@@ -310,12 +311,12 @@ const Contact = () => {
                       >
                         {isSubmitting ? (
                           <>
-                            <Loader2 size={18} className="animate-spin mr-2" />
+                            <Loader2 size={16} className="animate-spin mr-1.5" />
                             Sending...
                           </>
                         ) : (
                           <>
-                            Send Message <Send size={16} className="ml-1" />
+                            Send Message <Send size={14} className="ml-1" />
                           </>
                         )}
                       </motion.button>
