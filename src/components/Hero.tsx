@@ -205,7 +205,7 @@ const Hero = () => {
               <div className="absolute inset-0 bg-gradient-to-tl from-purple-100 via-indigo-50 to-slate-50 dark:from-purple-900/40 dark:via-indigo-900/20 dark:to-slate-800/30 rounded-3xl transform rotate-[6deg] scale-100 opacity-60 dark:opacity-40 blur-sm"></div>
 
               <img
-                src="/SB.jpg"
+                // src="/SB.jpg"
                 alt="Sudarshan Behera - FullStack Developer & UI Designer"
                 width={384}
                 height={384}
