@@ -29,15 +29,15 @@ const itemVariants = {
 const skillsData = [
   {
     category: 'Frontend Development',
-    items: ['React.js', 'Next.js', 'JavaScript (ES6+)', 'TypeScript', 'Redux', 'Framer Motion'],
+    items: ['React.js', 'Next.js', 'JavaScript (ES6+)', 'TypeScript'],
     icon: <Code size={18} />, 
     color: 'bg-indigo-100 dark:bg-indigo-900/30',
     borderColor: 'border-indigo-200 dark:border-indigo-800/50',
     iconColor: 'text-indigo-500 dark:text-indigo-400'
   },
   {
-    category: 'UI/UX Design',
-    items: ['Responsive Design', 'Figma', 'Prototyping', 'Accessibility', 'Design Systems', 'User Flows'],
+    category: 'UI Design',
+    items: ['Responsive Design'],
     icon: <Palette size={18} />,
     color: 'bg-purple-100 dark:bg-purple-900/30',
     borderColor: 'border-purple-200 dark:border-purple-800/50',
@@ -45,7 +45,7 @@ const skillsData = [
   },
   {
     category: 'Backend & Databases',
-    items: ['Node.js', 'Express', 'MongoDB', 'Firebase', 'REST APIs', 'GraphQL'],
+    items: ['Node.js', 'Express', 'MongoDB', 'PHP', 'MySQL'],
     icon: <Terminal size={18} />,
     color: 'bg-emerald-100 dark:bg-emerald-900/30',
     borderColor: 'border-emerald-200 dark:border-emerald-800/50',
@@ -53,7 +53,7 @@ const skillsData = [
   },
   {
     category: 'Styling & Tools',
-    items: ['Tailwind CSS', 'SASS/SCSS', 'CSS Modules', 'Styled Components', 'Git', 'VS Code'],
+    items: ['Tailwind CSS', 'SASS', 'CSS Modules', 'Styled Components', 'VS Code'],
     icon: <Layers size={18} />,
     color: 'bg-blue-100 dark:bg-blue-900/30',
     borderColor: 'border-blue-200 dark:border-blue-800/50',
@@ -61,7 +61,7 @@ const skillsData = [
   },
   {
     category: 'Soft Skills',
-    items: ['Team Leadership', 'Problem-Solving', 'Communication', 'Mentorship', 'Agile Methodologies', 'Client Relations'],
+    items: ['Team Leadership', 'Problem-Solving', 'Communication', 'Mentorship', 'Client Relations'],
     icon: <Users size={18} />,
     color: 'bg-teal-100 dark:bg-teal-900/30',
     borderColor: 'border-teal-200 dark:border-teal-800/50',
@@ -119,7 +119,7 @@ const About = () => {
 
             <div className="space-y-4 sm:space-y-5 text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
               <p>
-                Hello! I'm a passionate <strong className="font-semibold text-slate-800 dark:text-slate-100">Full Stack Developer</strong> with expertise in <strong className="font-semibold text-slate-800 dark:text-slate-100">UI/UX Design</strong>. With over <span className="font-bold text-indigo-600 dark:text-indigo-400">2+ years</span> of professional experience, I specialize in building responsive, accessible web applications using modern frameworks.
+                Hello! I'm a passionate <strong className="font-semibold text-slate-800 dark:text-slate-100">FrontEnd Developer</strong> with expertise in <strong className="font-semibold text-slate-800 dark:text-slate-100">UI Design</strong>. With over <span className="font-bold text-indigo-600 dark:text-indigo-400">2+ years</span> of professional experience, I specialize in building responsive, accessible web applications using modern frameworks.
               </p>
 
               <div className="p-3 sm:p-4 bg-slate-50 dark:bg-slate-700/30 rounded-md sm:rounded-lg border border-slate-200/70 dark:border-slate-600/50">
