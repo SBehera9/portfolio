@@ -98,27 +98,26 @@ const Hero = () => {
             </motion.p>
 
             <motion.h1
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 dark:text-slate-100 mb-3 sm:mb-4 leading-tight"
+              className="text-3xl sm:text-3xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 dark:text-slate-100 mb-3 sm:mb-4 leading-tight"
               variants={itemVariants}
             >
               Sudarshan <span className="text-indigo-600 dark:text-indigo-400">Behera</span>
             </motion.h1>
 
             <motion.h2
-              className="text-lg sm:text-xl md:text-2xl text-slate-700 dark:text-slate-300 mb-4 sm:mb-6 font-medium flex items-center gap-1.5 sm:gap-2 justify-center md:justify-start flex-wrap"
+              className="text-lg sm:text-xl md:text-1xl text-slate-700 dark:text-slate-300 mb-4 sm:mb-6 font-medium flex items-center gap-1.5 sm:gap-2 justify-center md:justify-start flex-wrap"
               variants={itemVariants}
             >
               <Code className="text-indigo-500 dark:text-indigo-400" size={20} />
               <span className="bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-400 dark:to-purple-400 bg-clip-text text-transparent">
                 FrontEnd Developer
               </span>
-              <span className="text-slate-400 dark:text-slate-500 mx-1 md:mx-2">|</span>
-              <Palette className="text-purple-500 dark:text-purple-400" size={20} />
+              <span className="text-slate-400 dark:text-slate-500 mx-0 md:mx-0">|</span>
               <span>UI Developer</span>
             </motion.h2>
 
             <motion.p
-              className="text-slate-600 dark:text-slate-400 text-base sm:text-lg mb-6 sm:mb-8 md:mb-10 max-w-md mx-auto md:mx-0 leading-relaxed"
+              className="text-slate-600 dark:text-slate-400 text-base sm:text-2 mb-6 sm:mb-8 md:mb-10 max-w-md mx-auto md:mx-0 leading-relaxed"
               variants={itemVariants}
             >
               I build exceptional digital experiences with modern web technologies, focusing on performance, accessibility, and beautiful interfaces.
