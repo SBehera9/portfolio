@@ -29,7 +29,7 @@ const projectsData = [
     id: 2,
     title: 'Varsada E-Commerce',
     description: 'Full-featured e-commerce platform with user/admin dashboards, product management, and seamless checkout process.',
-    image: '/Varsada.jpeg',
+    image: '/Varsada.jpg',
     technologies: ['React', 'Tailwind CSS', 'API Integration', 'TypeScript', 'Context API'],
     liveLink: 'https://varsada.com/',
     githubLink: 'https://github.com/SBehera9/varsada-mvp',
