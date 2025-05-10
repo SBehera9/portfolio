@@ -6,10 +6,10 @@ import { cn } from '@/lib/utils';
 const experienceData = [
   {
     id: 1,
-    title: 'Software Engineer Intern',
+    title: 'Software Developer',
     company: 'Nexus InfoTech',
     location: 'Berhampur, Odisha',
-    period: 'Jun 2023 - Present',
+    period: 'Feb 2024 - May 2025',
     responsibilities: [
       'Developed responsive and interactive UI using React.js, Next.js and Tailwind CSS',
       'Created reusable components and dynamic pages for e-commerce platforms',

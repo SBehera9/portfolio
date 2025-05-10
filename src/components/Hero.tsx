@@ -110,10 +110,10 @@ const Hero = () => {
             >
               <Code className="text-indigo-500 dark:text-indigo-400" size={20} />
               <span className="bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-400 dark:to-purple-400 bg-clip-text text-transparent">
-                FrontEnd Developer
+                Software Developer
               </span>
               <span className="text-slate-400 dark:text-slate-500 mx-0 md:mx-0">|</span>
-              <span>UI Developer</span>
+              <span>FrontEnd Developer</span>
             </motion.h2>
 
             <motion.p

@@ -170,8 +170,8 @@ const Navbar = () => {
           </motion.button>
 
           <motion.a
-            href="/SB_Resume.pdf" 
-            download="SB_Resume.pdf"
+            href="/SB_Resume_.pdf" 
+            download="SB_Resume_.pdf"
             target="_blank"
             rel="noopener noreferrer"
             className="ml-2 px-4 py-2 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white text-sm font-medium rounded-lg transition-all duration-300 shadow hover:shadow-md flex items-center gap-2"
@@ -275,8 +275,8 @@ const Navbar = () => {
                 );
               })}
               <motion.a
-                href="/SB_Resume.pdf"
-                download="SB_Resume.pdf"
+                href="/SB_Resume_.pdf"
+                download="SB_Resume_.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full py-4 px-6 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white text-base font-medium text-center transition-all duration-300 flex items-center justify-center gap-2"

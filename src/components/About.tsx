@@ -119,7 +119,7 @@ const About = () => {
 
             <div className="space-y-4 sm:space-y-5 text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
               <p>
-                Hello! I'm a passionate <strong className="font-semibold text-slate-800 dark:text-slate-100">FrontEnd Developer</strong> with expertise in <strong className="font-semibold text-slate-800 dark:text-slate-100">UI Design</strong>. With over <span className="font-bold text-indigo-600 dark:text-indigo-400">2+ years</span> of professional experience, I specialize in building responsive, accessible web applications using modern frameworks.
+                Hello! I'm a passionate <strong className="font-semibold text-slate-800 dark:text-slate-100">Software Developer</strong> with expertise in <strong className="font-semibold text-slate-800 dark:text-slate-100">UI Design/FrontEnd Developer</strong>. With over <span className="font-bold text-indigo-600 dark:text-indigo-400">1+ years</span> of professional experience, I specialize in building responsive, accessible web applications using modern frameworks.
               </p>
 
               <div className="p-3 sm:p-4 bg-slate-50 dark:bg-slate-700/30 rounded-md sm:rounded-lg border border-slate-200/70 dark:border-slate-600/50">
@@ -142,7 +142,7 @@ const About = () => {
                 </div>
                 <div className="flex items-center gap-2 sm:gap-3 bg-purple-50 dark:bg-purple-900/20 px-3 py-1.5 sm:px-4 sm:py-2 rounded-md sm:rounded-lg border border-purple-100 dark:border-purple-800/50">
                   <Code className="text-purple-500 dark:text-purple-400" size={16} />
-                  <span className="text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-300">2+ Years Experience</span>
+                  <span className="text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-300">1+ Years Experience</span>
                 </div>
               </div>
             </div>
